@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'PcapSandbox' target in the 'PcapSandbox' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
