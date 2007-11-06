@@ -23,6 +23,7 @@
 /* is this one really necessary? cause you can just use [[[self] data] bytes] */
 - (const void *) bytePointer;
 
-- (id)initWithHeader: (struct pcap_pkthdr *)header data:(u_char *)data;
+- (id)initWithHeader: (const struct pcap_pkthdr *)header
+    data:(const u_char *)data;
 
 @end

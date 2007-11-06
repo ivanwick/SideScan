@@ -23,7 +23,8 @@
     return self;
 }
 
-- (id)initWithHeader: (struct pcap_pkthdr *)aHeader data:(u_char *)someData
+- (id)initWithHeader: (const struct pcap_pkthdr *)aHeader
+    data:(const u_char *)someData
 {
     self = [self init];  /* note this is NOT a [SUPER init] */
     if (self)

@@ -16,8 +16,16 @@ NSString * const PcapPacketReceived = @"PcapPacketReceived";
 @interface PacketPipe : NSObject {
 
     pcap_t *pcapsess;
+    char errbuf[PCAP_ERRBUF_SIZE];
 
 }
 
+- (id)init;
+- (id)initWithFopenOffline:(FILE *)filePtr;
+
+- (void)setPcapSession:(pcap_t *)aSess;
+- (pcap_t *)pcapsess;
+
+- (void)monitorInBackgroundAndNotify;
 
 @end
