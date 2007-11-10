@@ -10,7 +10,6 @@
 #import <pcap.h>
 
 
-NSString * const PcapPacketReceived = @"PcapPacketReceived";
 
 
 @interface PacketPipe : NSObject {
