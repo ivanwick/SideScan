@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C6A4D370CE5900500D831EB /* libpcap.0.9.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */; };
+		2C6A4D520CE590EB00D831EB /* libpcap.0.9.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */; };
 		2C9BB4AD0CDFA0E5004E2ABA /* PacketAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */; };
 		2C9BB4C50CDFA685004E2ABA /* PcapPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BB4C40CDFA685004E2ABA /* PcapPacket.m */; };
 		2CD8232A0CDC3F1400CF8239 /* PSBController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD823290CDC3F1400CF8239 /* PSBController.m */; };
@@ -19,6 +21,19 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2C6A4D590CE5914200D831EB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = ../lib;
+			dstSubfolderSpec = 6;
+			files = (
+				2C6A4D520CE590EB00D831EB /* libpcap.0.9.8.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -27,6 +42,7 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpcap.0.9.8.dylib; sourceTree = "<group>"; };
 		2C9BB4AB0CDFA0E5004E2ABA /* PacketAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketAnalyzer.h; sourceTree = "<group>"; };
 		2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketAnalyzer.m; sourceTree = "<group>"; };
 		2C9BB4C30CDFA685004E2ABA /* PcapPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapPacket.h; sourceTree = "<group>"; };
@@ -39,7 +55,7 @@
 		2CFCD8860CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 128344313412187500isluvliestfa.jpg; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PcapSandbox_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapSandbox_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* PcapSandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PcapSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* PcapSandbox.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PcapSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				2C6A4D370CE5900500D831EB /* libpcap.0.9.8.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,10 +148,19 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C6A4D390CE5902A00D831EB /* lib */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C6A4D390CE5902A00D831EB /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */,
+			);
+			name = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +171,7 @@
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "PcapSandbox" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
+				2C6A4D590CE5914200D831EB /* CopyFiles */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 			);
@@ -232,6 +259,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				PRODUCT_NAME = PcapSandbox;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
@@ -249,6 +281,11 @@
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				PRODUCT_NAME = PcapSandbox;
 				WRAPPER_EXTENSION = app;
 			};

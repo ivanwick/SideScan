@@ -6,8 +6,17 @@
 //  Copyright 2007 __MyCompanyName__. All rights reserved.
 //
 
+
+/*
+Will probably have to do something like this in order to bundle a copy of
+libpcap that has pcap_fopen_offline in it.
+http://0xced.blogspot.com/2006/07/dealing-with-outdated-open-source-libs.html
+*/
+
 #import "PacketPipe.h"
 #import "PcapPacket.h"
+
+NSString * const PcapPacketReceived = @"PcapMonitorPacketReceived";
 
 @implementation PacketPipe
 
@@ -15,6 +24,8 @@
 void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
                  const u_char *data)
 {
+	NSLog(@"capped");
+	
     /* Encapsulate the packet into an object so that it can be attached to
        an NSNotification, */
     PcapPacket *pack = [[PcapPacket alloc] initWithHeader:header data:data];
@@ -29,7 +40,6 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
         coalesceMask:NSNotificationCoalescingOnName
         forModes:nil];
 
-    [sendNote release];
     [pack release];
 }
 
@@ -49,7 +59,9 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
     self = [self init];
     if (self)
     {
+    NSLog(@"%s", pcap_lib_version());
         pcapsess = pcap_fopen_offline(filePtr, errbuf);
+        // pcapsess = pcap_open_offline(errbuf, errbuf);
         if (pcapsess == NULL)
         {
             // throw an exception with errbuf??
@@ -91,7 +103,7 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
        returned if cnt is exhausted; -2 is returned if the loop terminated due
        to  a  call  to pcap_breakloop() before any packets were processed.
     */
-
+        NSLog(@"[pool release]");
         [pool release];
     }
 }

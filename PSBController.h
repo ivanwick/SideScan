@@ -4,11 +4,13 @@
 #import <Security/Authorization.h>
 #import <Security/AuthorizationTags.h>
 
+#import "PacketPipe.h"
+
 @interface PSBController : NSObject
 {
     AuthorizationRef authorizationRef;
     bool authorized;
-    FILE* iopipe;
+    PacketPipe *pktPipe;
 }
 
 - (IBAction)runTcpdump:(id)sender;
