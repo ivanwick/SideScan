@@ -10,7 +10,7 @@
 {
     AuthorizationRef authorizationRef;
     bool authorized;
-    PacketPipe *pktPipe;
+    PacketStream *pktPipe;
 }
 
 - (IBAction)runTcpdump:(id)sender;

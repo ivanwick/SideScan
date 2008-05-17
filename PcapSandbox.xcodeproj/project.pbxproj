@@ -12,7 +12,7 @@
 		2C9BB4AD0CDFA0E5004E2ABA /* PacketAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */; };
 		2C9BB4C50CDFA685004E2ABA /* PcapPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BB4C40CDFA685004E2ABA /* PcapPacket.m */; };
 		2CD8232A0CDC3F1400CF8239 /* PSBController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD823290CDC3F1400CF8239 /* PSBController.m */; };
-		2CD823AB0CDC614600CF8239 /* PacketPipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD823AA0CDC614600CF8239 /* PacketPipe.m */; };
+		2CD823AB0CDC614600CF8239 /* PacketStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD823AA0CDC614600CF8239 /* PacketStream.m */; };
 		2CFCD8850CE03A17001C1B33 /* wingtip.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCD8840CE03A17001C1B33 /* wingtip.jpg */; };
 		2CFCD8870CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCD8860CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
@@ -47,10 +47,12 @@
 		2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketAnalyzer.m; sourceTree = "<group>"; };
 		2C9BB4C30CDFA685004E2ABA /* PcapPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapPacket.h; sourceTree = "<group>"; };
 		2C9BB4C40CDFA685004E2ABA /* PcapPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcapPacket.m; sourceTree = "<group>"; };
+		2CC67F3A0DDEC13900D5EB66 /* PacketPipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketPipe.h; sourceTree = "<group>"; };
+		2CC67F3D0DDEC14D00D5EB66 /* PacketPipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketPipe.m; sourceTree = "<group>"; };
 		2CD823280CDC3F1400CF8239 /* PSBController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PSBController.h; sourceTree = "<group>"; };
 		2CD823290CDC3F1400CF8239 /* PSBController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = PSBController.m; sourceTree = "<group>"; };
-		2CD823A90CDC614600CF8239 /* PacketPipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketPipe.h; sourceTree = "<group>"; };
-		2CD823AA0CDC614600CF8239 /* PacketPipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketPipe.m; sourceTree = "<group>"; };
+		2CD823A90CDC614600CF8239 /* PacketStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketStream.h; sourceTree = "<group>"; };
+		2CD823AA0CDC614600CF8239 /* PacketStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketStream.m; sourceTree = "<group>"; };
 		2CFCD8840CE03A17001C1B33 /* wingtip.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wingtip.jpg; sourceTree = "<group>"; };
 		2CFCD8860CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 128344313412187500isluvliestfa.jpg; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PcapSandbox_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapSandbox_Prefix.pch; sourceTree = "<group>"; };
@@ -76,8 +78,10 @@
 			children = (
 				2CD823280CDC3F1400CF8239 /* PSBController.h */,
 				2CD823290CDC3F1400CF8239 /* PSBController.m */,
-				2CD823A90CDC614600CF8239 /* PacketPipe.h */,
-				2CD823AA0CDC614600CF8239 /* PacketPipe.m */,
+				2CC67F3A0DDEC13900D5EB66 /* PacketPipe.h */,
+				2CD823A90CDC614600CF8239 /* PacketStream.h */,
+				2CC67F3D0DDEC14D00D5EB66 /* PacketPipe.m */,
+				2CD823AA0CDC614600CF8239 /* PacketStream.m */,
 				2C9BB4C30CDFA685004E2ABA /* PcapPacket.h */,
 				2C9BB4C40CDFA685004E2ABA /* PcapPacket.m */,
 				2C9BB4AB0CDFA0E5004E2ABA /* PacketAnalyzer.h */,
@@ -221,7 +225,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				2CD8232A0CDC3F1400CF8239 /* PSBController.m in Sources */,
-				2CD823AB0CDC614600CF8239 /* PacketPipe.m in Sources */,
+				2CD823AB0CDC614600CF8239 /* PacketStream.m in Sources */,
 				2C9BB4AD0CDFA0E5004E2ABA /* PacketAnalyzer.m in Sources */,
 				2C9BB4C50CDFA685004E2ABA /* PcapPacket.m in Sources */,
 			);
@@ -298,6 +302,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
@@ -308,6 +313,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				ZERO_LINK = YES;
 			};
 			name = Release;
 		};

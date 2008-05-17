@@ -26,7 +26,7 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 	FILE *iopipe;
 	
      // tcpdump -i en1 -s 0 -U -s 0 -w -
-    char* args[] = {"-i", "lo0", "-s", "0", "-U", "-w", "-",
+    char* args[] = {"-i", "en0", "-s", "0", "-U", "-w", "-",
                     "tcp port 80 and not arp", NULL};
    
     if (! authorized)
@@ -40,7 +40,7 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
                 
         NSLog(@"AuthorizationExecuteWithPrivileges returned %d", err);
 		
-		pktPipe = [[PacketPipe alloc] initWithFopenOffline:iopipe];
+		pktPipe = [[PacketStream alloc] initWithFopenOffline:iopipe];
 		[pktPipe monitorInBackgroundAndNotify];
     }
 }

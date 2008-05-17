@@ -13,34 +13,28 @@ libpcap that has pcap_fopen_offline in it.
 http://0xced.blogspot.com/2006/07/dealing-with-outdated-open-source-libs.html
 */
 
-#import "PacketPipe.h"
-#import "PcapPacket.h"
+#import "PacketStream.h"
 
 NSString * const PcapPacketReceived = @"PcapMonitorPacketReceived";
 
-@implementation PacketPipe
+@implementation PacketStream
 
 /* this is a standard pcap callback for use by pcap_loop. */
 void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
                  const u_char *data)
 {
-	NSLog(@"capped");
+	NSLog(@"capped %d bytes", header->len);
 	
-    /* Encapsulate the packet into an object so that it can be attached to
-       an NSNotification, */
-    PcapPacket *pack = [[PcapPacket alloc] initWithHeader:header data:data];
+	PacketStream *self = (PacketStream*)userarg;
+	PcapPacket * pkt = [[PcapPacket alloc] initWithHeader:header
+										   data:data];
 
-    /* Pass the packet object up to the notification center/queue */
-    NSNotification *sendNote =
-        [NSNotification notificationWithName:PcapPacketReceived object:pack];
-
-    [[NSNotificationQueue defaultQueue]
-        enqueueNotification:sendNote
-        postingStyle:NSPostWhenIdle
-        coalesceMask:NSNotificationCoalescingOnName
-        forModes:nil];
-
-    [pack release];
+	[[self bufferLock] lock];
+	/* add the packet data to buffer queue */	
+	[[self packetBuf] addObject:pkt];
+	[pkt release];
+	
+	[[self bufferLock] unlock];
 }
 
 - (id)init
@@ -64,10 +58,15 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
         // pcapsess = pcap_open_offline(errbuf, errbuf);
         if (pcapsess == NULL)
         {
+			NSLog(@"Can't open pcap session.");
             // throw an exception with errbuf??
             [self release];
             return nil;
         }
+		
+		packetBuf = [[NSMutableArray alloc] initWithCapacity:1000];
+												/* 1000? who knows?*/
+		bufferLock = [[NSLock alloc] init];
     }
 
     // any reason to save filePtr?    
@@ -75,9 +74,16 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
     return self;
 }
 
+- (void)dealloc
+{
+	[bufferLock release];
+	[packetBuf release];
+	[super dealloc];
+}
 
 - (void)monitorInBackgroundAndNotify
 {
+	NSLog(@"main thread: self: %@", self);
     [NSThread detachNewThreadSelector:@selector (startPcapLoopForeverArg:)
         toTarget:self
         withObject:nil];
@@ -97,7 +103,7 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
 
         /* FIX is 20 a good number for this? */
         result = pcap_loop(pcapsess, 20,
-                    PacketPipe_packetrecv, NULL);
+                    PacketPipe_packetrecv, (void*)self );
 
     /* -1 is returned on an error; 0 is
        returned if cnt is exhausted; -2 is returned if the loop terminated due
@@ -109,6 +115,42 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
 }
 
 
+- (PcapPacket *)getNextPacket
+{
+	
+	/* get a temporary copy of the first available packet in the queue */
+
+	PcapPacket * retPkt;
+	[bufferLock lock];
+
+	retPkt = [[packetBuf objectAtIndex:0] retain];
+	[packetBuf removeObjectAtIndex:0];
+	
+	[bufferLock unlock];
+
+	return [retPkt autorelease];  /* this should be the main thread's
+									 autorelease pool or whatever, the
+									 calling thread's pool.*/
+}
+
+- (int)getPacketsIntoArray:(NSMutableArray *)pktArray   /* NSInteger in 10.5?? */
+{
+	int count;
+	
+	[bufferLock lock];
+	/* put the available packets into buf */
+	[pktArray addObjectsFromArray:packetBuf];
+	
+	count = [packetBuf count];
+	[packetBuf removeAllObjects];
+	
+	[bufferLock unlock];
+	
+	return count;
+}
+
+
+
 - (void)setPcapSession:(pcap_t *)aSess
 {
     pcapsess = aSess;
@@ -118,5 +160,11 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
     return pcapsess;
 }
 
+- (NSLock *)bufferLock
+{	return bufferLock;
+}
+- (NSMutableArray *)packetBuf
+{	return packetBuf;
+}
 
 @end
