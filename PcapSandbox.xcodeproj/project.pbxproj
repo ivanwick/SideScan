@@ -47,8 +47,6 @@
 		2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketAnalyzer.m; sourceTree = "<group>"; };
 		2C9BB4C30CDFA685004E2ABA /* PcapPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapPacket.h; sourceTree = "<group>"; };
 		2C9BB4C40CDFA685004E2ABA /* PcapPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcapPacket.m; sourceTree = "<group>"; };
-		2CC67F3A0DDEC13900D5EB66 /* PacketPipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketPipe.h; sourceTree = "<group>"; };
-		2CC67F3D0DDEC14D00D5EB66 /* PacketPipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketPipe.m; sourceTree = "<group>"; };
 		2CD823280CDC3F1400CF8239 /* PSBController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PSBController.h; sourceTree = "<group>"; };
 		2CD823290CDC3F1400CF8239 /* PSBController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = PSBController.m; sourceTree = "<group>"; };
 		2CD823A90CDC614600CF8239 /* PacketStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketStream.h; sourceTree = "<group>"; };
@@ -78,9 +76,7 @@
 			children = (
 				2CD823280CDC3F1400CF8239 /* PSBController.h */,
 				2CD823290CDC3F1400CF8239 /* PSBController.m */,
-				2CC67F3A0DDEC13900D5EB66 /* PacketPipe.h */,
 				2CD823A90CDC614600CF8239 /* PacketStream.h */,
-				2CC67F3D0DDEC14D00D5EB66 /* PacketPipe.m */,
 				2CD823AA0CDC614600CF8239 /* PacketStream.m */,
 				2C9BB4C30CDFA685004E2ABA /* PcapPacket.h */,
 				2C9BB4C40CDFA685004E2ABA /* PcapPacket.m */,

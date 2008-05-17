@@ -40,9 +40,23 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
                 
         NSLog(@"AuthorizationExecuteWithPrivileges returned %d", err);
 		
-		pktPipe = [[PacketStream alloc] initWithFopenOffline:iopipe];
-		[pktPipe monitorInBackgroundAndNotify];
+		pktStream = [[PacketStream alloc] initWithFopenOffline:iopipe];
+		[[NSNotificationCenter defaultCenter] addObserver:self
+									selector:@selector(procPacketNotification:)
+									name:@"packet"
+									object:pktStream];
+		
+		[pktStream monitorInBackgroundAndNotify];
     }
+}
+
+- (void)procPacketNotification:(NSNotification *)note
+{
+	NSMutableArray *a = [[NSMutableArray alloc] initWithCapacity:10];
+	[pktStream getPacketsIntoArray:a];
+	NSLog(@"packet buffer has %d packets ",[a count]);
+	
+	[a release];
 }
 
 - (IBAction)connectPacketPipe:(id)sender

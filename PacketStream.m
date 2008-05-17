@@ -35,6 +35,14 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
 	[pkt release];
 	
 	[[self bufferLock] unlock];
+	
+	NSNotification * note = [NSNotification notificationWithName:@"packet"
+								object:self];
+	
+	[[NSNotificationCenter defaultCenter]
+		performSelectorOnMainThread:@selector(postNotification:)
+		withObject:note
+		waitUntilDone:NO];
 }
 
 - (id)init
@@ -55,6 +63,7 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
     {
     NSLog(@"%s", pcap_lib_version());
         pcapsess = pcap_fopen_offline(filePtr, errbuf);
+	NSLog(@"running");
         // pcapsess = pcap_open_offline(errbuf, errbuf);
         if (pcapsess == NULL)
         {
