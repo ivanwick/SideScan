@@ -42,6 +42,8 @@ typedef enum
 (void *)destMAC;
 */
 
+- (PcapPacket *)pcapPacket;
+
 - (PacketEthernetEtherType)etherType;
 - (void *)headerPointer;
 - (void *)dataPointer;

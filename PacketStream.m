@@ -38,6 +38,7 @@ void packet_analyze(const struct pcap_pkthdr *header, const u_char *data)
 			
 	NSLog(@"tcp srcport: %d", ntohs(tcph->th_sport));
 	NSLog(@"tcp destport: %d", ntohs(tcph->th_dport));
+
 }
 
 
@@ -64,8 +65,7 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
 	NSNotification * note = [NSNotification notificationWithName:@"packet"
 								object:self];
 	
-	packet_analyze(header, data);
-	
+	/* packet_analyze(header, data); */
 	
 	[[NSNotificationCenter defaultCenter]
 		performSelectorOnMainThread:@selector(postNotification:)

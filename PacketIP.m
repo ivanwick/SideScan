@@ -13,7 +13,7 @@
 
 -(id) initWithPacketDatalink:(id <PacketDatalink>)pdl
 {
-    self = [super init];
+    self = [super initByReferencingPcapPacket:[pdl pcapPacket]];
     if (self)
     {
         datalink = pdl;

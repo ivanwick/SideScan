@@ -14,7 +14,7 @@
 
 - (id)initWithPcapPacket:(PcapPacket *)pcp
 {
-    self = [super init];
+    self = [super initByReferencingPcapPacket:pcp];
     if (self)
     {
         pcap = pcp;
@@ -40,5 +40,7 @@
 
 - (const void *)headerPointer {   return ethHeadPtr;    }
 - (const void *)dataPointer   {   return ethDataPtr;    }
+
+- (PcapPacket *)pcapPacket  { return pcap;  }
 
 @end

@@ -37,11 +37,12 @@
                 [[PacketIP alloc] initWithPacketDatalink:
                 [[PacketEthernet alloc] initWithPcapPacket:pkt]]];
                 
-/*		NSLog(@"src: %d:%d\tdst: %d:%d",
+		NSLog(@"src: %d:%d\tdst: %d:%d",
             [ptcp sourceIPAddress], [ptcp sourcePort],
             [ptcp destIPAddress], [ptcp destPort]);
-*/		NSLog(@"src: %d\tdst: %d",
+/*		NSLog(@"src: %d\tdst: %d",
             [ptcp sourcePort], [ptcp destPort]);
+*/
 	}
 
 	[a release];

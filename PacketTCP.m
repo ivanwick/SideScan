@@ -12,7 +12,7 @@
 
 -(id)initWithPacketIP:(PacketIP *)pip
 {
-    self = [super init];
+    self = [super initWithPacketDatalink:[pip packetDatalink]];
     if (self)
     {
         ip = pip;

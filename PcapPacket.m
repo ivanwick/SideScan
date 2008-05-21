@@ -20,6 +20,8 @@
         pktHeader = NULL;
         pktData = NULL;
 		datalinkLength = 0;
+        refPacket = nil;
+
     }
     return self;
 }
@@ -50,6 +52,18 @@
     return self;
 }
 
+- (id)initByReferencingPcapPacket:(PcapPacket*)pkt
+{
+    self = [self init];
+    if (self)
+    {
+        [pkt retain];
+        pktHeader = [pkt header];
+        pktData = [pkt dataPointer];
+    }
+    return self;
+}
+    
 - (id)initWithHeader: (const struct pcap_pkthdr *)aHeader
     data:(const u_char *)someData datalinkLength:(unsigned int)dll
 {
@@ -65,7 +79,7 @@
 {
     if (pktHeader) { free(pktHeader); }
     if (pktData)   { free(pktData);   }
-    
+    if (refPacket) { [refPacket release]; }
     [super dealloc];
 }
 

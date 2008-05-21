@@ -7,11 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PcapPacket.h"
 
-/* THIS IS AN ABSTRACT CLASS */
+/* Abstract class? Interface/Protocol?? */
 
 @protocol PacketDatalink <NSObject>
 
 - (void *)dataPointer;
+- (PcapPacket *)pcapPacket;
 
 @end

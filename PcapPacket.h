@@ -17,12 +17,13 @@
     /* Consider changing the internal representation to an NSData. */
 	
 	unsigned int datalinkLength;
+    
+    /* this instance var is only set when the object is initialized with
+       initByReferencingPcapPacket:. Otherwise it should stay nil. */
+    PcapPacket *refPacket;
 }
 
 - (struct pcap_pkthdr *) header;
-/*
--(id)initWithPacketIP(PacketIP *)pip;
-*/
 
 /* is this one really necessary? cause you can just use [[[self] data] bytes] */
 - (const void *) dataPointer;
@@ -34,5 +35,7 @@
     data:(const u_char *)data;
 - (id)initWithHeader: (const struct pcap_pkthdr *)header
     data:(const u_char *)data datalinkLength:(unsigned int)dll;
+
+- (id)initByReferencingPcapPacket:(PcapPacket*)pkt;
 
 @end
