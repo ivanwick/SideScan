@@ -7,10 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C03810A0DE01FF900E6B7D4 /* PacketTCP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C0381080DE01FF900E6B7D4 /* PacketTCP.h */; };
+		2C03836A0DE25D3500E6B7D4 /* PacketEthernet.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C0383680DE25D3500E6B7D4 /* PacketEthernet.h */; };
+		2C03836B0DE25D3500E6B7D4 /* PacketEthernet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0383690DE25D3500E6B7D4 /* PacketEthernet.m */; };
+		2C03836E0DE25D5400E6B7D4 /* PacketIP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C03836C0DE25D5400E6B7D4 /* PacketIP.h */; };
+		2C03836F0DE25D5400E6B7D4 /* PacketIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03836D0DE25D5400E6B7D4 /* PacketIP.m */; };
+		2C46504A0DE27A4C00F0A2EA /* PacketDatalink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */; };
+		2C46504B0DE27A4C00F0A2EA /* PacketDatalink.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */; };
 		2C6A4D370CE5900500D831EB /* libpcap.0.9.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */; };
 		2C6A4D520CE590EB00D831EB /* libpcap.0.9.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */; };
 		2C9BB4AD0CDFA0E5004E2ABA /* PacketAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */; };
 		2C9BB4C50CDFA685004E2ABA /* PcapPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BB4C40CDFA685004E2ABA /* PcapPacket.m */; };
+		2CAAD7CD0DE3BB12006838B1 /* PcapPacket.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C9BB4C30CDFA685004E2ABA /* PcapPacket.h */; };
+		2CAAD7CE0DE3BB12006838B1 /* PacketTCP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C46515D0DE2972D00F0A2EA /* PacketTCP.m */; };
 		2CD8232A0CDC3F1400CF8239 /* PSBController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD823290CDC3F1400CF8239 /* PSBController.m */; };
 		2CD823AB0CDC614600CF8239 /* PacketStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD823AA0CDC614600CF8239 /* PacketStream.m */; };
 		2CFCD8850CE03A17001C1B33 /* wingtip.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCD8840CE03A17001C1B33 /* wingtip.jpg */; };
@@ -29,6 +38,11 @@
 			dstSubfolderSpec = 6;
 			files = (
 				2C6A4D520CE590EB00D831EB /* libpcap.0.9.8.dylib in CopyFiles */,
+				2C03810A0DE01FF900E6B7D4 /* PacketTCP.h in CopyFiles */,
+				2C03836A0DE25D3500E6B7D4 /* PacketEthernet.h in CopyFiles */,
+				2C03836E0DE25D5400E6B7D4 /* PacketIP.h in CopyFiles */,
+				2C46504A0DE27A4C00F0A2EA /* PacketDatalink.h in CopyFiles */,
+				2CAAD7CD0DE3BB12006838B1 /* PcapPacket.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +56,14 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2C0381080DE01FF900E6B7D4 /* PacketTCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketTCP.h; sourceTree = "<group>"; };
+		2C0383680DE25D3500E6B7D4 /* PacketEthernet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketEthernet.h; sourceTree = "<group>"; };
+		2C0383690DE25D3500E6B7D4 /* PacketEthernet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketEthernet.m; sourceTree = "<group>"; };
+		2C03836C0DE25D5400E6B7D4 /* PacketIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketIP.h; sourceTree = "<group>"; };
+		2C03836D0DE25D5400E6B7D4 /* PacketIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketIP.m; sourceTree = "<group>"; };
+		2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketDatalink.h; sourceTree = "<group>"; };
+		2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketDatalink.m; sourceTree = "<group>"; };
+		2C46515D0DE2972D00F0A2EA /* PacketTCP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketTCP.m; sourceTree = "<group>"; };
 		2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpcap.0.9.8.dylib; sourceTree = "<group>"; };
 		2C9BB4AB0CDFA0E5004E2ABA /* PacketAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketAnalyzer.h; sourceTree = "<group>"; };
 		2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketAnalyzer.m; sourceTree = "<group>"; };
@@ -78,10 +100,9 @@
 				2CD823290CDC3F1400CF8239 /* PSBController.m */,
 				2CD823A90CDC614600CF8239 /* PacketStream.h */,
 				2CD823AA0CDC614600CF8239 /* PacketStream.m */,
-				2C9BB4C30CDFA685004E2ABA /* PcapPacket.h */,
-				2C9BB4C40CDFA685004E2ABA /* PcapPacket.m */,
 				2C9BB4AB0CDFA0E5004E2ABA /* PacketAnalyzer.h */,
 				2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */,
+				2C0383670DE25CF600E6B7D4 /* PacketLib */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -155,6 +176,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C0383670DE25CF600E6B7D4 /* PacketLib */ = {
+			isa = PBXGroup;
+			children = (
+				2C9BB4C30CDFA685004E2ABA /* PcapPacket.h */,
+				2C9BB4C40CDFA685004E2ABA /* PcapPacket.m */,
+				2C0381080DE01FF900E6B7D4 /* PacketTCP.h */,
+				2C46515D0DE2972D00F0A2EA /* PacketTCP.m */,
+				2C0383680DE25D3500E6B7D4 /* PacketEthernet.h */,
+				2C0383690DE25D3500E6B7D4 /* PacketEthernet.m */,
+				2C03836C0DE25D5400E6B7D4 /* PacketIP.h */,
+				2C03836D0DE25D5400E6B7D4 /* PacketIP.m */,
+				2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */,
+				2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */,
+			);
+			name = PacketLib;
+			sourceTree = "<group>";
+		};
 		2C6A4D390CE5902A00D831EB /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +262,10 @@
 				2CD823AB0CDC614600CF8239 /* PacketStream.m in Sources */,
 				2C9BB4AD0CDFA0E5004E2ABA /* PacketAnalyzer.m in Sources */,
 				2C9BB4C50CDFA685004E2ABA /* PcapPacket.m in Sources */,
+				2C03836B0DE25D3500E6B7D4 /* PacketEthernet.m in Sources */,
+				2C03836F0DE25D5400E6B7D4 /* PacketIP.m in Sources */,
+				2C46504B0DE27A4C00F0A2EA /* PacketDatalink.m in Sources */,
+				2CAAD7CE0DE3BB12006838B1 /* PacketTCP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
