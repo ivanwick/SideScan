@@ -27,7 +27,7 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 	
      // tcpdump -i en1 -s 0 -U -s 0 -w -
     char* args[] = {"-i", "en0", "-s", "0", "-U", "-w", "-",
-                    "tcp port 80 and not arp", NULL};
+                    "tcp and port 80", NULL};
    
     if (! authorized)
     {
@@ -37,30 +37,22 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
     {
         err = AuthorizationExecuteWithPrivileges(authorizationRef,
                 tcpdump_path, 0, args, &iopipe);
+	
+		pktStream = [[PacketStream alloc] initWithFilePtr:iopipe];
+		pktAnalyzer = [[PacketAnalyzer alloc] init];
+		[self connectObservers];
                 
-        NSLog(@"AuthorizationExecuteWithPrivileges returned %d", err);
-		
-		pktStream = [[PacketStream alloc] initWithFopenOffline:iopipe];
-		[[NSNotificationCenter defaultCenter] addObserver:self
-									selector:@selector(procPacketNotification:)
-									name:@"packet"
-									object:pktStream];
-		
 		[pktStream monitorInBackgroundAndNotify];
     }
 }
 
-- (void)procPacketNotification:(NSNotification *)note
+- (void)connectObservers
 {
-	NSMutableArray *a = [[NSMutableArray alloc] initWithCapacity:10];
-	[pktStream getPacketsIntoArray:a];
-	NSLog(@"packet buffer has %d packets ",[a count]);
-	
-	[a release];
-}
+	[[NSNotificationCenter defaultCenter] addObserver:pktAnalyzer
+								selector:@selector(procPacketNotification:)
+								name:@"packet"
+								object:pktStream];
 
-- (IBAction)connectPacketPipe:(id)sender
-{
 /*
     PacketPipe *pktPipe = [[PacketPipe alloc] initUsingFopen:iopipe];
     PacketAnalyzer *pktAnalyzer = [[PacketAnalyzer alloc] init];
@@ -71,15 +63,6 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
     [pktPipe readInBackgroundAndNotify];
 */
 
-/*
-    pcap_t *pcap_sess;
-    int result;
-    
-    pcap_sess = pcap_offline_fopen(iopipe, errbuf);
-    result = pcap_loop(pcap_sess, -1,   // negative means go forever 
-                       callback_function, NULL);
-    
-*/    
 }
 
 - (IBAction)toggleAuth:(id)sender

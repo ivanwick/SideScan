@@ -19,6 +19,7 @@
     
         pktHeader = NULL;
         pktData = NULL;
+		datalinkLength = 0;
     }
     return self;
 }
@@ -49,6 +50,17 @@
     return self;
 }
 
+- (id)initWithHeader: (const struct pcap_pkthdr *)aHeader
+    data:(const u_char *)someData datalinkLength:(unsigned int)dll
+{
+	self = [self initWithHeader:aHeader data:someData];
+	if (self)
+	{
+		[self setDatalinkLength:dll];
+	}
+	return self;
+}
+
 - (void)dealloc
 {
     if (pktHeader) { free(pktHeader); }
@@ -62,7 +74,7 @@
     return [NSData dataWithBytes:pktData length:pktHeader->len];
 }
 
-- (const void *) bytePointer
+- (const void *)dataPointer
 {
     return pktData;
 }
@@ -71,5 +83,13 @@
 {
     return pktHeader;
 }
+- (void) setDatalinkLength:(unsigned int)dll;
+{	datalinkLength = dll;
+}
+
+- (unsigned int)datalinkLength
+{	return datalinkLength;
+}
+
 
 @end

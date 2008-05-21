@@ -15,15 +15,24 @@
     struct pcap_pkthdr *pktHeader;
     u_char *pktData;
     /* Consider changing the internal representation to an NSData. */
+	
+	unsigned int datalinkLength;
 }
 
 - (struct pcap_pkthdr *) header;
-- (NSData *) data;
+/*
+-(id)initWithPacketIP(PacketIP *)pip;
+*/
 
 /* is this one really necessary? cause you can just use [[[self] data] bytes] */
-- (const void *) bytePointer;
+- (const void *) dataPointer;
+
+- (void) setDatalinkLength:(unsigned int)dll;
+- (unsigned int) datalinkLength;
 
 - (id)initWithHeader: (const struct pcap_pkthdr *)header
     data:(const u_char *)data;
+- (id)initWithHeader: (const struct pcap_pkthdr *)header
+    data:(const u_char *)data datalinkLength:(unsigned int)dll;
 
 @end

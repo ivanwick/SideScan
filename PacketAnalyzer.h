@@ -7,10 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PacketStream.h"
 
+#import "PacketEthernet.h"
+#import "PacketTCP.h"
 
 @interface PacketAnalyzer : NSObject {
-
+	NSMutableDictionary *connections;
 }
 
 @end

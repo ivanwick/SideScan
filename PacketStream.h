@@ -13,8 +13,9 @@
 
 
 @interface PacketStream : NSObject {
-
+	FILE * filePtr;
     pcap_t *pcapsess;
+	unsigned int datalinkLength;
     char errbuf[PCAP_ERRBUF_SIZE];
 	
 	NSMutableArray *packetBuf;
@@ -23,7 +24,7 @@
 }
 
 - (id)init;
-- (id)initWithFopenOffline:(FILE *)filePtr;
+- (id)initWithFilePtr:(FILE *)filePtr;
 
 - (void)dealloc;
 
@@ -34,6 +35,9 @@
 
 - (void)setPcapSession:(pcap_t *)aSess;
 - (pcap_t *)pcapsess;
+- (unsigned int)datalinkLength;
+
+- (unsigned int)pcap_datalinkLength;
 
 /* these are only used by the pcap callback and is not part of the public
    interface of this class */

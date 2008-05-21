@@ -7,10 +7,50 @@
 //
 
 #import "PacketAnalyzer.h"
-
+#import <netinet/tcp.h>
 
 @implementation PacketAnalyzer
 
+- (id)init
+{
+	self = [super init];
+	if (self)
+	{
+		connections = [[NSMutableDictionary alloc] init];
+	}
+	return self;
+}
+
+
+- (void)procPacketNotification:(NSNotification *)note
+{
+	NSMutableArray *a = [[NSMutableArray alloc] initWithCapacity:10];
+	[(PacketStream*)[note object] getPacketsIntoArray:a];
+
+	NSEnumerator *enumer = [a objectEnumerator];
+	PcapPacket *pkt;
+    PacketTCP *ptcp;
+	
+	while (pkt = (PcapPacket*)[enumer nextObject])
+	{
+        ptcp = [[PacketTCP alloc] initWithPacketIP:
+                [[PacketIP alloc] initWithPacketDatalink:
+                [[PacketEthernet alloc] initWithPcapPacket:pkt]]];
+                
+/*		NSLog(@"src: %d:%d\tdst: %d:%d",
+            [ptcp sourceIPAddress], [ptcp sourcePort],
+            [ptcp destIPAddress], [ptcp destPort]);
+*/		NSLog(@"src: %d\tdst: %d",
+            [ptcp sourcePort], [ptcp destPort]);
+	}
+
+	[a release];
+}
+
+@end
+
+
+#if 0
 - (void)packetReceived:(NSNotification *)note
 {
     NSData *packetData = (NSData *)[note object];
@@ -19,5 +59,4 @@
     /* is there an image there? */
     /* if so, send a notification. */
 }
-
-@end
+#endif
