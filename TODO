@@ -1,0 +1,6 @@
+- Change PacketStream so that it emits packets with the right datalink type,
+  since this can be obtained via a call to
+    int pcap_datalink(pcap_t *a)
+    
+- Change identifiers associated with PacketStream including the name of the
+  class itself.

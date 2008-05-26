@@ -25,6 +25,17 @@
     return self;
 }
 
++ (id)packetWithPacketDatalink:(id <PacketDatalink>)pdl
+{
+    PacketIP * tempPkt;
+    tempPkt = [[PacketIP alloc] initWithPacketDatalink:pdl];
+    if (tempPkt)
+    {   [tempPkt autorelease];
+    }
+    return tempPkt;
+}
+
+
 - (void)dealloc
 {
     [datalink release];

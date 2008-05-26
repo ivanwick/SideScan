@@ -19,10 +19,10 @@ http://0xced.blogspot.com/2006/07/dealing-with-outdated-open-source-libs.html
 #import <netinet/tcp.h>
 #import <netinet/ip.h>
 
-NSString * const PcapPacketReceived = @"PcapMonitorPacketReceived";
 
 @implementation PacketStream
 
+NSString * const PcapPacketReceived = @"PcapMonitorPacketReceived";
 
 
 void packet_analyze(const struct pcap_pkthdr *header, const u_char *data)
@@ -62,7 +62,7 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
 	
 	[[self bufferLock] unlock];
 	
-	NSNotification * note = [NSNotification notificationWithName:@"packet"
+	NSNotification * note = [NSNotification notificationWithName:PcapPacketReceived
 								object:self];
 	
 	/* packet_analyze(header, data); */

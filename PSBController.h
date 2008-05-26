@@ -13,6 +13,8 @@
     bool authorized;
     PacketStream *pktStream;
 	PacketAnalyzer *pktAnalyzer;
+    
+    IBOutlet NSTextView * textArea;
 }
 
 - (IBAction)runTcpdump:(id)sender;

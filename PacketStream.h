@@ -23,6 +23,8 @@
 	NSLock *bufferLock;
 }
 
+NSString * const PcapPacketReceived; // = @"PcapMonitorPacketReceived";
+
 - (id)init;
 - (id)initWithFilePtr:(FILE *)filePtr;
 

@@ -33,16 +33,17 @@
 	
 	while (pkt = (PcapPacket*)[enumer nextObject])
 	{
+        NSLog(@"pkt: %@", pkt);
+        
         ptcp = [[PacketTCP alloc] initWithPacketIP:
-                [[PacketIP alloc] initWithPacketDatalink:
-                [[PacketEthernet alloc] initWithPcapPacket:pkt]]];
-                
+                [PacketIP packetWithPacketDatalink:
+                [PacketEthernet packetWithPcapPacket:pkt]]];
+        
 		NSLog(@"src: %d:%d\tdst: %d:%d",
             [ptcp sourceIPAddress], [ptcp sourcePort],
             [ptcp destIPAddress], [ptcp destPort]);
-/*		NSLog(@"src: %d\tdst: %d",
-            [ptcp sourcePort], [ptcp destPort]);
-*/
+        
+        [ptcp release];
 	}
 
 	[a release];

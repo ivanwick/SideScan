@@ -18,6 +18,7 @@
 }
 
 -(id)initWithPacketIP:(PacketIP *)pip;
++(id)packetWithPacketIP:(PacketIP *)pip;
 
 - (void*)headerPointer;
 - (void*)dataPointer;

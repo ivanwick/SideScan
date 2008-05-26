@@ -24,6 +24,16 @@
     return self;
 }
 
++ (id)packetWithPacketIP:(PacketIP*)pip
+{
+    PacketTCP *tempPkt;
+    tempPkt = [[PacketTCP alloc] initWithPacketIP:pip];
+    if (tempPkt)
+    {   [tempPkt autorelease];
+    }
+    return tempPkt;
+}
+
 -(void)dealloc
 {
     [ip release];

@@ -26,6 +26,16 @@
     return self;
 }
 
++ (id)packetWithPcapPacket:(PcapPacket*)pkt
+{
+    PacketEthernet* tempPkt;
+    tempPkt = [[PacketEthernet alloc] initWithPcapPacket:pkt];
+    if (tempPkt)
+    {   [tempPkt autorelease];
+    }
+    return tempPkt;
+}
+
 
 -(void)dealloc
 {

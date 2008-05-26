@@ -26,7 +26,7 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 	FILE *iopipe;
 	
      // tcpdump -i en1 -s 0 -U -s 0 -w -
-    char* args[] = {"-i", "en0", "-s", "0", "-U", "-w", "-",
+    char* args[] = {"-i", "en1", "-s", "0", "-U", "-w", "-",
                     "tcp and port 80", NULL};
    
     if (! authorized)
@@ -50,9 +50,8 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 {
 	[[NSNotificationCenter defaultCenter] addObserver:pktAnalyzer
 								selector:@selector(procPacketNotification:)
-								name:@"packet"
+								name:PcapPacketReceived
 								object:pktStream];
-
 /*
     PacketPipe *pktPipe = [[PacketPipe alloc] initUsingFopen:iopipe];
     PacketAnalyzer *pktAnalyzer = [[PacketAnalyzer alloc] init];
@@ -62,7 +61,13 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
     [self setObserver: something: whatever: yarly:];
     [pktPipe readInBackgroundAndNotify];
 */
-
+/*  [textStorage beginEditing];
+    [[textArea textStorage] appendAttributedString:
+        [[[NSAttributedString alloc]
+            initWithString:@"Connected y0"] autorelease]];
+    [textStorage endEditing];
+*/
+    [textArea insertText:@"Connected y0\n"];
 }
 
 - (IBAction)toggleAuth:(id)sender

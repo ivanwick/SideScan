@@ -38,6 +38,8 @@ typedef enum
 }
 
 -(id) initWithPacketDatalink:(id <PacketDatalink>)pdl;
++ (id)packetWithPacketDatalink:(id <PacketDatalink>)pdl;
+
 -(id <PacketDatalink>) packetDatalink;
 
 -(struct in_addr)sourceIPAddress;

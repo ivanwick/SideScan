@@ -33,6 +33,7 @@ typedef enum
 
 
 - (id)initWithPcapPacket:(PcapPacket *)pcp;
++ (id)packetWithPcapPacket:(PcapPacket*)pkt;
 
 
 /*	I don't know what type these should return but I am not using

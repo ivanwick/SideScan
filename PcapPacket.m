@@ -57,11 +57,22 @@
     self = [self init];
     if (self)
     {
+        refPacket = pkt;
         [pkt retain];
         pktHeader = [pkt header];
         pktData = [pkt dataPointer];
     }
     return self;
+}
+
++ (id)packetByReferencingPcapPacket:(PcapPacket*)pkt
+{
+    PcapPacket* tempPkt;
+    tempPkt = [[PcapPacket alloc] initByReferencingPcapPacket:pkt];
+    if (tempPkt)
+    {   [tempPkt autorelease];
+    }
+    return tempPkt;
 }
     
 - (id)initWithHeader: (const struct pcap_pkthdr *)aHeader
@@ -77,9 +88,16 @@
 
 - (void)dealloc
 {
-    if (pktHeader) { free(pktHeader); }
-    if (pktData)   { free(pktData);   }
-    if (refPacket) { [refPacket release]; }
+    NSLog(@"[PcapPacket dealloc] %@", self);
+    if (refPacket)
+    {
+        [refPacket release];
+    }
+    else
+    {
+        if (pktHeader) { free(pktHeader); }
+        if (pktData)   { free(pktData);   }
+    }
     [super dealloc];
 }
 

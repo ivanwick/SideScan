@@ -12,6 +12,8 @@
 		2C03836B0DE25D3500E6B7D4 /* PacketEthernet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0383690DE25D3500E6B7D4 /* PacketEthernet.m */; };
 		2C03836E0DE25D5400E6B7D4 /* PacketIP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C03836C0DE25D5400E6B7D4 /* PacketIP.h */; };
 		2C03836F0DE25D5400E6B7D4 /* PacketIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03836D0DE25D5400E6B7D4 /* PacketIP.m */; };
+		2C30D79B0DE3F3CF0086A3A1 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 2C30D79A0DE3F3CF0086A3A1 /* TODO */; };
+		2C41025F0DEA0B2C00B2EC12 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C41022A0DEA0B2C00B2EC12 /* Security.framework */; };
 		2C46504A0DE27A4C00F0A2EA /* PacketDatalink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */; };
 		2C46504B0DE27A4C00F0A2EA /* PacketDatalink.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */; };
 		2C6A4D370CE5900500D831EB /* libpcap.0.9.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */; };
@@ -61,6 +63,8 @@
 		2C0383690DE25D3500E6B7D4 /* PacketEthernet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketEthernet.m; sourceTree = "<group>"; };
 		2C03836C0DE25D5400E6B7D4 /* PacketIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketIP.h; sourceTree = "<group>"; };
 		2C03836D0DE25D5400E6B7D4 /* PacketIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketIP.m; sourceTree = "<group>"; };
+		2C30D79A0DE3F3CF0086A3A1 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		2C41022A0DEA0B2C00B2EC12 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketDatalink.h; sourceTree = "<group>"; };
 		2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketDatalink.m; sourceTree = "<group>"; };
 		2C46515D0DE2972D00F0A2EA /* PacketTCP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketTCP.m; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2C6A4D370CE5900500D831EB /* libpcap.0.9.8.dylib in Frameworks */,
+				2C41025F0DEA0B2C00B2EC12 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +115,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C41022A0DEA0B2C00B2EC12 /* Security.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -162,6 +168,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
+				2C30D79A0DE3F3CF0086A3A1 /* TODO */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -247,6 +254,7 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				2CFCD8850CE03A17001C1B33 /* wingtip.jpg in Resources */,
 				2CFCD8870CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg in Resources */,
+				2C30D79B0DE3F3CF0086A3A1 /* TODO in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +316,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				PRODUCT_NAME = PcapSandbox;
 				WRAPPER_EXTENSION = app;
-				ZERO_LINK = YES;
+				ZERO_LINK = NO;
 			};
 			name = Debug;
 		};
@@ -330,6 +338,7 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				PRODUCT_NAME = PcapSandbox;
 				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};

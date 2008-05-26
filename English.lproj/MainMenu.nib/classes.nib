@@ -5,6 +5,7 @@
             ACTIONS = {runTcpdump = id; toggleAuth = id; }; 
             CLASS = PSBController; 
             LANGUAGE = ObjC; 
+            OUTLETS = {textArea = id; }; 
             SUPERCLASS = NSObject; 
         }
     ); 

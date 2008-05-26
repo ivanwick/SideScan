@@ -38,4 +38,7 @@
 
 - (id)initByReferencingPcapPacket:(PcapPacket*)pkt;
 
++ (id)packetByReferencingPcapPacket:(PcapPacket*)pkt;
+
+
 @end
