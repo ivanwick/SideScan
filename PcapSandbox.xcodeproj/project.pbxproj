@@ -12,6 +12,14 @@
 		2C03836B0DE25D3500E6B7D4 /* PacketEthernet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0383690DE25D3500E6B7D4 /* PacketEthernet.m */; };
 		2C03836E0DE25D5400E6B7D4 /* PacketIP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C03836C0DE25D5400E6B7D4 /* PacketIP.h */; };
 		2C03836F0DE25D5400E6B7D4 /* PacketIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03836D0DE25D5400E6B7D4 /* PacketIP.m */; };
+		2C1F34BF0DF675F700C4B98A /* TrafficAnalyzer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C1F34BD0DF675F700C4B98A /* TrafficAnalyzer.h */; };
+		2C1F34C00DF675F700C4B98A /* TrafficAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F34BE0DF675F700C4B98A /* TrafficAnalyzer.m */; };
+		2C1F34F90DF7013C00C4B98A /* ConnectionIdentifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C1F34F70DF7013C00C4B98A /* ConnectionIdentifier.h */; };
+		2C1F34FA0DF7013C00C4B98A /* ConnectionIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F34F80DF7013C00C4B98A /* ConnectionIdentifier.m */; };
+		2C1F35D50DF7234E00C4B98A /* DataBlock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C1F35D30DF7234E00C4B98A /* DataBlock.h */; };
+		2C1F35D60DF7234E00C4B98A /* DataBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F35D40DF7234E00C4B98A /* DataBlock.m */; };
+		2C26D1060DEA9F91000CFA47 /* ConnectionTCP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C26D1040DEA9F91000CFA47 /* ConnectionTCP.h */; };
+		2C26D1070DEA9F91000CFA47 /* ConnectionTCP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C26D1050DEA9F91000CFA47 /* ConnectionTCP.m */; };
 		2C30D79B0DE3F3CF0086A3A1 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 2C30D79A0DE3F3CF0086A3A1 /* TODO */; };
 		2C41025F0DEA0B2C00B2EC12 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C41022A0DEA0B2C00B2EC12 /* Security.framework */; };
 		2C46504A0DE27A4C00F0A2EA /* PacketDatalink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */; };
@@ -45,6 +53,10 @@
 				2C03836E0DE25D5400E6B7D4 /* PacketIP.h in CopyFiles */,
 				2C46504A0DE27A4C00F0A2EA /* PacketDatalink.h in CopyFiles */,
 				2CAAD7CD0DE3BB12006838B1 /* PcapPacket.h in CopyFiles */,
+				2C26D1060DEA9F91000CFA47 /* ConnectionTCP.h in CopyFiles */,
+				2C1F34BF0DF675F700C4B98A /* TrafficAnalyzer.h in CopyFiles */,
+				2C1F34F90DF7013C00C4B98A /* ConnectionIdentifier.h in CopyFiles */,
+				2C1F35D50DF7234E00C4B98A /* DataBlock.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +75,14 @@
 		2C0383690DE25D3500E6B7D4 /* PacketEthernet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketEthernet.m; sourceTree = "<group>"; };
 		2C03836C0DE25D5400E6B7D4 /* PacketIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketIP.h; sourceTree = "<group>"; };
 		2C03836D0DE25D5400E6B7D4 /* PacketIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketIP.m; sourceTree = "<group>"; };
+		2C1F34BD0DF675F700C4B98A /* TrafficAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficAnalyzer.h; sourceTree = "<group>"; };
+		2C1F34BE0DF675F700C4B98A /* TrafficAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrafficAnalyzer.m; sourceTree = "<group>"; };
+		2C1F34F70DF7013C00C4B98A /* ConnectionIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionIdentifier.h; sourceTree = "<group>"; };
+		2C1F34F80DF7013C00C4B98A /* ConnectionIdentifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionIdentifier.m; sourceTree = "<group>"; };
+		2C1F35D30DF7234E00C4B98A /* DataBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBlock.h; sourceTree = "<group>"; };
+		2C1F35D40DF7234E00C4B98A /* DataBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBlock.m; sourceTree = "<group>"; };
+		2C26D1040DEA9F91000CFA47 /* ConnectionTCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionTCP.h; sourceTree = "<group>"; };
+		2C26D1050DEA9F91000CFA47 /* ConnectionTCP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionTCP.m; sourceTree = "<group>"; };
 		2C30D79A0DE3F3CF0086A3A1 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		2C41022A0DEA0B2C00B2EC12 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketDatalink.h; sourceTree = "<group>"; };
@@ -105,8 +125,16 @@
 				2CD823290CDC3F1400CF8239 /* PSBController.m */,
 				2CD823A90CDC614600CF8239 /* PacketStream.h */,
 				2CD823AA0CDC614600CF8239 /* PacketStream.m */,
+				2C26D1040DEA9F91000CFA47 /* ConnectionTCP.h */,
+				2C26D1050DEA9F91000CFA47 /* ConnectionTCP.m */,
 				2C9BB4AB0CDFA0E5004E2ABA /* PacketAnalyzer.h */,
 				2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */,
+				2C1F34BD0DF675F700C4B98A /* TrafficAnalyzer.h */,
+				2C1F34BE0DF675F700C4B98A /* TrafficAnalyzer.m */,
+				2C1F34F70DF7013C00C4B98A /* ConnectionIdentifier.h */,
+				2C1F34F80DF7013C00C4B98A /* ConnectionIdentifier.m */,
+				2C1F35D30DF7234E00C4B98A /* DataBlock.h */,
+				2C1F35D40DF7234E00C4B98A /* DataBlock.m */,
 				2C0383670DE25CF600E6B7D4 /* PacketLib */,
 			);
 			name = Classes;
@@ -274,6 +302,10 @@
 				2C03836F0DE25D5400E6B7D4 /* PacketIP.m in Sources */,
 				2C46504B0DE27A4C00F0A2EA /* PacketDatalink.m in Sources */,
 				2CAAD7CE0DE3BB12006838B1 /* PacketTCP.m in Sources */,
+				2C26D1070DEA9F91000CFA47 /* ConnectionTCP.m in Sources */,
+				2C1F34C00DF675F700C4B98A /* TrafficAnalyzer.m in Sources */,
+				2C1F34FA0DF7013C00C4B98A /* ConnectionIdentifier.m in Sources */,
+				2C1F35D60DF7234E00C4B98A /* DataBlock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

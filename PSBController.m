@@ -39,7 +39,8 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
                 tcpdump_path, 0, args, &iopipe);
 	
 		pktStream = [[PacketStream alloc] initWithFilePtr:iopipe];
-		pktAnalyzer = [[PacketAnalyzer alloc] init];
+		// pktAnalyzer = [[PacketAnalyzer alloc] init];
+        trafAnalyzer = [[TrafficAnalyzer alloc] init];
 		[self connectObservers];
                 
 		[pktStream monitorInBackgroundAndNotify];
@@ -48,8 +49,8 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 
 - (void)connectObservers
 {
-	[[NSNotificationCenter defaultCenter] addObserver:pktAnalyzer
-								selector:@selector(procPacketNotification:)
+	[[NSNotificationCenter defaultCenter] addObserver:trafAnalyzer
+								selector:@selector(receivedPacketNotification:)
 								name:PcapPacketReceived
 								object:pktStream];
 /*
@@ -67,7 +68,7 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
             initWithString:@"Connected y0"] autorelease]];
     [textStorage endEditing];
 */
-    [textArea insertText:@"Connected y0\n"];
+    [[[textArea textStorage] mutableString] appendString:@"Connected y0\n"];
 }
 
 - (IBAction)toggleAuth:(id)sender
@@ -119,6 +120,10 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
         
         authorized = YES;
     }
+
+    
+    if (authorized) { [textArea insertText:@"Authorization: YA RLY\n"];  }
+    else            { [textArea insertText:@"Authorization: NO LULZ\n"]; }
 }
 
 - (void)awakeFromNib
@@ -156,6 +161,18 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
     {
         NSLog(@"AuthorizationRef initialization failed. Consider quitting now.");
     }
+}
+
+- (IBAction)showStatus:(id)sender
+{
+    [textArea insertText:@"STATUS ur mom\n"];
+    [textArea insertText:[trafAnalyzer connectionStatus]];
+}
+
+- (IBAction)clearLogText:(id)sender
+{
+    [[textArea textStorage] setAttributedString:
+        [[[NSAttributedString alloc] initWithString:@""] autorelease]];
 }
 
 @end

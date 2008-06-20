@@ -19,7 +19,8 @@
         datalink = pdl;
         [datalink retain];
         ipHeadPtr = [datalink dataPointer];
-        ipDataPtr = ipHeadPtr + sizeof(struct ip);
+        ipDataPtr = ipHeadPtr + [self ipDataByteOffset]; //sizeof(struct ip);
+        _ipDataLength = [pdl dataLength] - [self ipDataByteOffset];
     }
     
     return self;
@@ -48,12 +49,28 @@
 
 - (void*)headerPointer  {   return ipHeadPtr;   }
 - (void*)dataPointer    {   return ipDataPtr;   }
+- (unsigned int)dataLength {return _ipDataLength; }
 
--(struct in_addr)sourceIPAddress
-{   return ((struct ip*)ipHeadPtr)->ip_src;
+-(struct in_addr)sourceIPAddr   {   return ((struct ip*)ipHeadPtr)->ip_src; }
+-(struct in_addr)destIPAddr     {   return ((struct ip*)ipHeadPtr)->ip_dst; }
+
+-(NSHost *)sourceHost
+{   return [NSHost hostWithAddress:
+                [NSString stringWithCString:
+                    inet_ntoa(((struct ip*)ipHeadPtr)->ip_src)]];
 }
 
--(struct in_addr)destIPAddress;
-{   return ((struct ip*)ipHeadPtr)->ip_dst;
+-(NSHost *)destHost;
+{   return [NSHost hostWithAddress:
+                [NSString stringWithCString:
+                    inet_ntoa(((struct ip*)ipHeadPtr)->ip_dst)]];
 }
+
+-(unsigned int) ipDataByteOffset
+{
+    return ((struct ip*)ipHeadPtr)->ip_hl * 4;
+        // multiply by 4 is because header length is in units of 32-bit words.
+}
+
+
 @end

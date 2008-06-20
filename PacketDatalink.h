@@ -15,5 +15,6 @@
 
 - (void *)dataPointer;
 - (PcapPacket *)pcapPacket;
+- (unsigned int)dataLength;
 
 @end

@@ -48,5 +48,6 @@ typedef enum
 - (PacketEthernetEtherType)etherType;
 - (void *)headerPointer;
 - (void *)dataPointer;
+- (unsigned int)dataLength;
 
 @end

@@ -4,3 +4,17 @@
     
 - Change identifiers associated with PacketStream including the name of the
   class itself.
+  
+- Figure out whenever an int is being used, whether it would be more appropriate
+  to use NSInteger or NSUInteger.
+  
+- Change initializers in the Packet class hierarchy to take advantage of late
+  binding and dynamic typing, i.e. it may be possible for a direct init from
+  PcapPacket to PacketTCP and passing self, instead of initializing temporary
+  objects all the way down from PacketIP, PacketDatalink etc. (??)
+  
++ Add methods to PacketIP for getting NSHost for src and dst address instead of
+  a struct in_addr.
+  
+- Figure out the state of the TrafficAnalyzer code.
+  Complete the TrafficAnalyzer class and debug.

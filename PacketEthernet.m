@@ -53,4 +53,10 @@
 
 - (PcapPacket *)pcapPacket  { return pcap;  }
 
+- (unsigned int)dataLength
+{
+    /* FIX should this be caplen instead of len??? */
+    return ([pcap header])->len - [pcap datalinkLength];
+}
+
 @end

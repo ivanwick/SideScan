@@ -88,7 +88,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"[PcapPacket dealloc] %@", self);
+    //NSLog(@"[PcapPacket dealloc] %@", self);
     if (refPacket)
     {
         [refPacket release];

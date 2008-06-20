@@ -11,6 +11,7 @@
 #import "PcapPacket.h"
 #import <netinet/in.h>
 #import <netinet/ip.h>
+#include <arpa/inet.h>  // inet_ntoa
 
 typedef enum
 {
@@ -34,6 +35,7 @@ typedef enum
 @interface PacketIP : PcapPacket {
     void * ipHeadPtr;
     void * ipDataPtr;
+    unsigned int _ipDataLength;
     id <PacketDatalink> datalink;
 }
 
@@ -42,10 +44,15 @@ typedef enum
 
 -(id <PacketDatalink>) packetDatalink;
 
--(struct in_addr)sourceIPAddress;
--(struct in_addr)destIPAddress;
+-(struct in_addr)sourceIPAddr;
+-(struct in_addr)destIPAddr;
+-(NSHost *)sourceHost;
+-(NSHost *)destHost;
+
+-(unsigned int)ipDataByteOffset;
 
 - (void*)headerPointer;
 - (void*)dataPointer;
+- (unsigned int)dataLength;
 
 @end

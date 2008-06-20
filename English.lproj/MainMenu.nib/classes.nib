@@ -2,10 +2,10 @@
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
-            ACTIONS = {runTcpdump = id; toggleAuth = id; }; 
+            ACTIONS = {clearLogText = id; runTcpdump = id; showStatus = id; toggleAuth = id; }; 
             CLASS = PSBController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {textArea = id; }; 
+            OUTLETS = {textArea = NSTextView; }; 
             SUPERCLASS = NSObject; 
         }
     ); 

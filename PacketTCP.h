@@ -14,6 +14,7 @@
 @interface PacketTCP : PacketIP {
     void * tcpHeadPtr;
     void * tcpDataPtr;
+    unsigned int _tcpDataLength;
     PacketIP *ip;
 }
 
@@ -22,15 +23,17 @@
 
 - (void*)headerPointer;
 - (void*)dataPointer;
+- (unsigned int)dataLength;
 
 -(unsigned short)sourcePort;
 -(unsigned short)destPort;
 
--(unsigned short)seqNum;
--(unsigned short)ackNum;
+-(unsigned int)seqNum;
+-(unsigned int)ackNum;
 
--(unsigned short)dataOffset;
+-(unsigned int)tcpDataByteOffset;
 
 -(struct tcphdr*)tcpHeader;
+-(BOOL)finFlag;
 
 @end

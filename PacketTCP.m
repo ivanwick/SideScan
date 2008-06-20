@@ -19,7 +19,8 @@
         [ip retain];
         
         tcpHeadPtr = [ip dataPointer];
-        tcpDataPtr = tcpHeadPtr + sizeof(struct tcphdr);
+        tcpDataPtr = tcpHeadPtr + [self tcpDataByteOffset]; // sizeof(struct tcphdr);
+        _tcpDataLength = [ip dataLength] - [self tcpDataByteOffset];
     }
     return self;
 }
@@ -43,7 +44,7 @@
 
 - (void*)headerPointer  {   return tcpHeadPtr;  }
 - (void*)dataPointer    {   return tcpDataPtr;  }
-
+- (unsigned int)dataLength {return _tcpDataLength; }
 
 
 -(unsigned short)sourcePort
@@ -57,19 +58,24 @@
 }
 
 
--(unsigned short)seqNum;
+-(unsigned int)seqNum;
 {	return ntohs(((struct tcphdr*)tcpHeadPtr)->th_seq);
 }
--(unsigned short)ackNum;
+-(unsigned int)ackNum;
 {	return ntohs(((struct tcphdr*)tcpHeadPtr)->th_ack);
 }
 
--(unsigned short)dataOffset;
-{	return ntohs(((struct tcphdr*)tcpHeadPtr)->th_off);
+-(unsigned int)tcpDataByteOffset;
+{	return ntohs(((struct tcphdr*)tcpHeadPtr)->th_off) * 4;
+    // multiply by 4 is sizeof(int) because th_off is in units of
+    // 32-bit words.
 }
 
 -(struct tcphdr*)tcpHeader;
 {	return (struct tcphdr*)tcpHeadPtr;
 }
 
+-(BOOL)finFlag
+{   return (((struct tcphdr*)tcpHeadPtr)->th_flags) & TH_FIN;
+}
 @end
