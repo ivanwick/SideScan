@@ -70,8 +70,6 @@ NSString * const TAWillDeleteConnection = @"TAWillDeleteConnection";
         // connident was autorelease
 	}
 
-    NSLog(@"_connections count: %d", [_connections count]);
-
 	[_pktBuf removeAllObjects];
 }
 
@@ -109,6 +107,7 @@ NSString * const TAWillDeleteConnection = @"TAWillDeleteConnection";
             ci,
             [[ctcp dataBlocks] count],
             ([ctcp hasReceivedFIN] ? @"FIN" : [[ctcp lastUpdate] description])];
+        [ctcp writeBlocksToFile:@"/Users/ivan/pcapsandbox/blockdata"];
     }
     
     return report;

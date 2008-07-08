@@ -55,4 +55,7 @@
 - (unsigned int)isn;
 
 - (NSArray *)dataBlocks;
+
+- (void)writeBlocksToFile:(NSString*)path;
+
 @end

@@ -54,14 +54,17 @@
 
 - (void)addPacket:(PacketTCP*)pkt
 {
-    DataBlock *newblk = [[DataBlock alloc] initWithInitialPacket:pkt
-                                initialSeqNum:[self isn]];
-    [_blockRanges addObject:newblk];
-    [_blockRanges sortUsingSelector:@selector(compareRangeLocationWith:)];
-    [newblk release];
-    
-    [self combineAdjacentDataBlocks];
+    if ([pkt dataLength] > 0)
+    {
+        DataBlock *newblk = [[DataBlock alloc] initWithInitialPacket:pkt
+                                    initialSeqNum:[self isn]];
+        [_blockRanges addObject:newblk];
+        [_blockRanges sortUsingSelector:@selector(compareRangeLocationWith:)];
+        [newblk release];
         
+        [self combineAdjacentDataBlocks];
+    }
+
     // check the FIN flag for future sweeping
     _fin = [pkt finFlag];
 
@@ -71,7 +74,7 @@
 
 -(void)combineAdjacentDataBlocks
 {
-    BOOL didCombine = NO;
+    BOOL didCombine = YES;
     int i;
     DataBlock *blk, *nextblk;
     NSRange brange, nrange;
@@ -85,6 +88,12 @@
             nextblk = [_blockRanges objectAtIndex:(i+1)];
             brange = [blk range];
             nrange = [nextblk range];
+            
+            NSLog(@"brange: %d, %d\tnrange: %d, %d",
+                brange.location, brange.length,
+                nrange.location, nrange.length);
+            
+
             if (brange.location + brange.length >= nrange.location)
             {
                 [blk combineWithDataBlock:nextblk];
@@ -113,6 +122,29 @@
 }
 
 - (NSArray *)dataBlocks { return _blockRanges; }
+
+- (void)writeBlocksToFile:(NSString*)path
+{
+    NSEnumerator* e;
+    e = [_blockRanges objectEnumerator];
+    DataBlock *blk;
+    int c;
+    
+    c = 0;
+    while (blk = [e nextObject])
+    {
+        if ([blk range].length > 0)
+        {   [[blk data] writeToFile:[NSString stringWithFormat:@"%@_%08x_%02d_%u_%u",
+                                      path, self, c, [blk rangeLocation], [blk range].length]
+                        atomically:YES];
+                        
+            NSLog([NSString stringWithFormat:@"%@_%08x_%02d_%u_%u",
+                    path, self, c, [blk rangeLocation], [blk range].length]);
+        }
+        c++; // NO ITS NOT ITS OBJECTIVE C LOLOLOLOLO
+    }
+}
+
 
 @end
 

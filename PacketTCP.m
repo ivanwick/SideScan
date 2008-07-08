@@ -59,14 +59,14 @@
 
 
 -(unsigned int)seqNum;
-{	return ntohs(((struct tcphdr*)tcpHeadPtr)->th_seq);
+{	return ntohl(((struct tcphdr*)tcpHeadPtr)->th_seq);
 }
 -(unsigned int)ackNum;
-{	return ntohs(((struct tcphdr*)tcpHeadPtr)->th_ack);
+{	return ntohl(((struct tcphdr*)tcpHeadPtr)->th_ack);
 }
 
 -(unsigned int)tcpDataByteOffset;
-{	return ntohs(((struct tcphdr*)tcpHeadPtr)->th_off) * 4;
+{	return ntohl(((struct tcphdr*)tcpHeadPtr)->th_off) * 4;
     // multiply by 4 is sizeof(int) because th_off is in units of
     // 32-bit words.
 }

@@ -36,7 +36,6 @@
             that an autorelease NSData is being returned back here, and then
             we are copying it AGAIN in this method.  Possible optimisation.
         */
-        
         _data = [[NSMutableData alloc]
                     initWithBytes:[pkt dataPointer] length:[pkt dataLength]];
 
@@ -76,6 +75,27 @@
     // of blk, and call appendDataBlock on the new DataBlock slice.
     
     // Otherwise, just pass this message through to appendDataBlock
+    
+    NSRange otherRange = [blk range];
+    DataBlock *sliceBlock;
+    
+    if (_range.location + _range.length > otherRange.location)
+    {
+        // make a new one?? or maybe just have a way to extract the data
+
+        // slice it
+        #if 0
+        sliceBlock = [[DataBlock alloc] initWithInitialPacket: initialSeqNum:;
+        [self appendDataBlock:sliceBlock];
+        [sliceBlock release];
+        #endif
+        NSLog(@"combine blocks with nonadjacent ranges??? QUIT YO JIBBA JABBA!!");
+    }
+    else
+    {
+        assert(_range.location + _range.length == otherRange.location);
+        [self appendDataBlock:blk];
+    }
 }
 
 -(unsigned int)rangeLocation    { return _range.location; }
