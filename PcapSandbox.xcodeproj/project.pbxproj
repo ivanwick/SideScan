@@ -24,6 +24,7 @@
 		2C41025F0DEA0B2C00B2EC12 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C41022A0DEA0B2C00B2EC12 /* Security.framework */; };
 		2C46504A0DE27A4C00F0A2EA /* PacketDatalink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */; };
 		2C46504B0DE27A4C00F0A2EA /* PacketDatalink.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */; };
+		2C487E8C0EDD0A4300628DEA /* HTTPRequestScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */; };
 		2C6A4D370CE5900500D831EB /* libpcap.0.9.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */; };
 		2C6A4D520CE590EB00D831EB /* libpcap.0.9.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */; };
 		2C9BB4AD0CDFA0E5004E2ABA /* PacketAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */; };
@@ -88,6 +89,8 @@
 		2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketDatalink.h; sourceTree = "<group>"; };
 		2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketDatalink.m; sourceTree = "<group>"; };
 		2C46515D0DE2972D00F0A2EA /* PacketTCP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketTCP.m; sourceTree = "<group>"; };
+		2C487E8A0EDD0A4300628DEA /* HTTPRequestScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequestScanner.h; sourceTree = "<group>"; };
+		2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequestScanner.m; sourceTree = "<group>"; };
 		2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpcap.0.9.8.dylib; sourceTree = "<group>"; };
 		2C9BB4AB0CDFA0E5004E2ABA /* PacketAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketAnalyzer.h; sourceTree = "<group>"; };
 		2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketAnalyzer.m; sourceTree = "<group>"; };
@@ -101,7 +104,7 @@
 		2CFCD8860CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 128344313412187500isluvliestfa.jpg; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PcapSandbox_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapSandbox_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* PcapSandbox.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PcapSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* PcapSandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PcapSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,15 +130,16 @@
 				2CD823AA0CDC614600CF8239 /* PacketStream.m */,
 				2C26D1040DEA9F91000CFA47 /* ConnectionTCP.h */,
 				2C26D1050DEA9F91000CFA47 /* ConnectionTCP.m */,
-				2C9BB4AB0CDFA0E5004E2ABA /* PacketAnalyzer.h */,
-				2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */,
 				2C1F34BD0DF675F700C4B98A /* TrafficAnalyzer.h */,
 				2C1F34BE0DF675F700C4B98A /* TrafficAnalyzer.m */,
+				2C487E8A0EDD0A4300628DEA /* HTTPRequestScanner.h */,
+				2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */,
 				2C1F34F70DF7013C00C4B98A /* ConnectionIdentifier.h */,
 				2C1F34F80DF7013C00C4B98A /* ConnectionIdentifier.m */,
 				2C1F35D30DF7234E00C4B98A /* DataBlock.h */,
 				2C1F35D40DF7234E00C4B98A /* DataBlock.m */,
 				2C0383670DE25CF600E6B7D4 /* PacketLib */,
+				2C487EA50EDE25FE00628DEA /* Unused */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -228,6 +232,15 @@
 			name = PacketLib;
 			sourceTree = "<group>";
 		};
+		2C487EA50EDE25FE00628DEA /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				2C9BB4AB0CDFA0E5004E2ABA /* PacketAnalyzer.h */,
+				2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */,
+			);
+			name = Unused;
+			sourceTree = "<group>";
+		};
 		2C6A4D390CE5902A00D831EB /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,9 +277,11 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "PcapSandbox" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* PcapSandbox */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* PcapSandbox */,
 			);
@@ -306,6 +321,7 @@
 				2C1F34C00DF675F700C4B98A /* TrafficAnalyzer.m in Sources */,
 				2C1F34FA0DF7013C00C4B98A /* ConnectionIdentifier.m in Sources */,
 				2C1F35D60DF7234E00C4B98A /* DataBlock.m in Sources */,
+				2C487E8C0EDD0A4300628DEA /* HTTPRequestScanner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
