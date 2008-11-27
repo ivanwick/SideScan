@@ -20,7 +20,11 @@
         [datalink retain];
         ipHeadPtr = [datalink dataPointer];
         ipDataPtr = ipHeadPtr + [self ipDataByteOffset]; //sizeof(struct ip);
-        _ipDataLength = [pdl dataLength] - [self ipDataByteOffset];
+    
+        /* sometimes ethernet frames are padded so we should take the length
+           from the IP header, NOT by computing it from the entire packet */
+        _ipDataLength = ((struct ip*)ipHeadPtr)->ip_len /* this incl header */
+                         - [self ipDataByteOffset];  /* so subt header len */
     }
     
     return self;

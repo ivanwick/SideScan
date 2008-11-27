@@ -12,10 +12,10 @@
 @implementation TrafficAnalyzer
 
 /* Notifications */
-NSString * const TADidCombineBlockRanges = @"TADidCombineBlockRanges";
-NSString * const TADidAddNewBlockRange = @"TADidAddNewBlockRange";
-NSString * const TAWillDeleteConnection = @"TAWillDeleteConnection";
+NSString * const TADidProcessPacket = @"TADidProcessPacket";
 
+/* Constant */
+#define TAConnectionTimeout 60
 
 -(id)init
 {
@@ -24,10 +24,27 @@ NSString * const TAWillDeleteConnection = @"TAWillDeleteConnection";
     {
         _pktBuf = [[NSMutableArray alloc] initWithCapacity:10];
         _connections = [[NSMutableDictionary alloc] init];
+        
+        _sweepTimer = [NSTimer timerWithTimeInterval:10
+                        target:self
+                        selector:@selector(periodicSweep:)
+                        userInfo:nil
+                        repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_sweepTimer
+            forMode:NSDefaultRunLoopMode];
+        
     }
     return self;
 }
 
+-(void) dealloc
+{
+    [_pktBuf release];
+    [_connections release];
+    [_sweepTimer invalidate];
+
+    [super dealloc];
+}
 
 - (void)receivedPacketNotification:(NSNotification *)note
 {
@@ -46,25 +63,26 @@ NSString * const TAWillDeleteConnection = @"TAWillDeleteConnection";
         ConnectionIdentifier *connident =
             [ConnectionIdentifier identifierForPacket:ptcp];
         
-        NSLog(@"connident: %@", connident);
+        // NSLog(@"connident: %@", connident);
 
         ConnectionTCP *conn = [_connections objectForKey:connident];
         if (conn != nil)
         {
-            NSLog(@"ConnectionIdentifier was FOUND");
+            // NSLog(@"ConnectionIdentifier was FOUND");
             [conn addPacket:ptcp];
         }
         else
         {
-            NSLog(@"ConnectionIdentifier was NOT FOUND");
+            // NSLog(@"ConnectionIdentifier was NOT FOUND");
             conn = [[ConnectionTCP alloc] initWithInitialPacket:ptcp];
             [_connections setObject:conn forKey:connident];
             [conn release];
 
-            /*  FIX:
-                send a notification that a new connection has been established?
-            */
         }
+
+        [[NSNotificationCenter defaultCenter]
+            postNotificationName:TADidProcessPacket
+            object:self];  // maybe ptcp should be in here somewhere???
 
         [ptcp release];
         // connident was autorelease
@@ -82,15 +100,47 @@ NSString * const TAWillDeleteConnection = @"TAWillDeleteConnection";
 */
 -(void)sweepConnections
 {
-    // for each connection
-    //  if (connection has received a FIN
-    //      or has timed out )
-    //  {   send a notification that it will be deleted
-    //      delete it.
-    //  }
-    // }
+    NSLog(@"sweeping now sir");
+    NSEnumerator *enumer = [_connections keyEnumerator];
+    ConnectionIdentifier *ci;
+    ConnectionTCP *ctcp;
+    NSMutableArray *removeList = [NSMutableArray
+                                    arrayWithCapacity:[_connections count]];
+
+    // Consider changing this to "Fast Enumeration" for Objective-C 2.0 in
+    // Mac OS X 10.5.
+	while (ci = (ConnectionIdentifier *)[enumer nextObject])
+	{
+        ctcp = [_connections objectForKey:ci];
+        if ([ctcp hasReceivedFIN]  ||
+            -[[ctcp lastUpdate] timeIntervalSinceNow] > TAConnectionTimeout)
+        {
+            [removeList addObject:ci];
+            
+            [ctcp willDiscard];
+        }
+        else
+        {
+            NSLog(@"keeping a connection last modified %@, %f sec ago sir",
+                [ctcp lastUpdate], -[[ctcp lastUpdate] timeIntervalSinceNow]);
+        }
+    }
+    
+    [_connections removeObjectsForKeys:removeList];
+    
+    /* http://developer.apple.com/documentation/Cocoa/Conceptual/Collections/Articles/Enumerators.html
+       It is not safe to remove, replace, or add to a mutable collection’s
+       elements while enumerating through it. If you need to modify a
+       collection during enumeration, you can either: make a copy of the
+       collection and enumerate using the copy; or, collect the information
+       you require during the enumeration and apply the changes afterwards.
+    */
 }
 
+- (void)periodicSweep:(NSTimer*)theTimer
+{
+    [self sweepConnections];
+}
 
 -(NSString *)connectionStatus
 {

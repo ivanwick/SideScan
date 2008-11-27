@@ -18,3 +18,14 @@
   
 - Figure out the state of the TrafficAnalyzer code.
   Complete the TrafficAnalyzer class and debug.
+  
+- See if it would fit to use NSBitmapImageRep incrementalLoadFromData:complete:
+  which returns NSImageRepLoadStatus, including such helpful enum vals as
+    NSImageRepLoadStatusUnexpectedEOF   = -5,
+    NSImageRepLoadStatusCompleted       = -6
+  since we don't know if we have or will ever get a complete image data from
+  captured traffic.
+
+- DNSResolverScanner to show what DNS names are being resolved.
+- 
+

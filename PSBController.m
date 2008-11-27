@@ -2,6 +2,9 @@
 
 #import "PSBController.h"
 
+// this is only here because i am hardcoding this scanner in
+#import "HTTPRequestScanner.h"
+
 @implementation PSBController
 
 char tcpdump_path[] = "/usr/sbin/tcpdump";
@@ -53,6 +56,8 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 								selector:@selector(receivedPacketNotification:)
 								name:PcapPacketReceived
 								object:pktStream];
+                                
+    [[[HTTPRequestScanner alloc] init] registerAsObserver];
 /*
     PacketPipe *pktPipe = [[PacketPipe alloc] initUsingFopen:iopipe];
     PacketAnalyzer *pktAnalyzer = [[PacketAnalyzer alloc] init];

@@ -22,6 +22,11 @@
     return self;
 }
 
+-(void)dealloc
+{
+    [_data release];
+    [super dealloc];
+}
 
 -(id)initWithInitialPacket:(PacketTCP *)pkt initialSeqNum:(unsigned int)isn;
 {
@@ -44,6 +49,13 @@
         _range = NSMakeRange(
             [self offsetWraparoundSeqNum:[pkt seqNum] initialSeqNum:isn],
             [_data length]);
+        
+        if (_range.location < 0)
+        {
+            NSLog(@"\trange location: %d", _range.location);
+            NSLog(@"\twhy?? isn: %d\tdatalen:%d", isn, [_data length]);
+        }
+
     }
     return self;
 }

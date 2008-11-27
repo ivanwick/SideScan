@@ -8,8 +8,18 @@
 
 #import "ConnectionTCP.h"
 
+// this import doesn't strictly need to be here, it's just here so that
+// writeblockstofile can use it to make prettier file names
+#import "ConnectionIdentifier.h"
 
 @implementation ConnectionTCP
+
+/* Notifications */
+NSString * const CTDidCombineBlockRanges = @"CTDidCombineBlockRanges";
+NSString * const CTDidAddNewBlockRange   = @"CTDidAddNewBlockRange";
+NSString * const CTWillBeDiscarded       = @"CTWillBeDiscarded";
+// is this one all that useful?
+NSString * const CTDidReceiveFIN         = @"CTDidRecieveFIN";
 
 - (id)init
 {
@@ -38,6 +48,18 @@
     return self;
 }
 
+- (void)willDiscard
+{
+    // we are being informed that we have no chance to survive and consequently
+    // it would be prudent at this juncture to make our time
+
+    // YOU HAVE NO CHANCE TO SURVIVE
+	[[NSNotificationCenter defaultCenter]
+        postNotificationName:CTWillBeDiscarded
+        object:self];
+    // MAKE YOUR TIME
+}
+
 - (void)dealloc
 {
     [_blockRanges release];
@@ -54,34 +76,65 @@
 
 - (void)addPacket:(PacketTCP*)pkt
 {
+    BOOL didCombine = NO;
+    
     if ([pkt dataLength] > 0)
     {
         DataBlock *newblk = [[DataBlock alloc] initWithInitialPacket:pkt
                                     initialSeqNum:[self isn]];
         [_blockRanges addObject:newblk];
         [_blockRanges sortUsingSelector:@selector(compareRangeLocationWith:)];
-        [newblk release];
+
+        didCombine = [self combineAdjacentDataBlocks];
         
-        [self combineAdjacentDataBlocks];
+        if (! didCombine)
+        {
+            /* inform observers that a noncontiguous block was added */
+            [[NSNotificationCenter defaultCenter]
+                postNotificationName:CTDidAddNewBlockRange
+                object:self
+                userInfo:[NSDictionary
+                    dictionaryWithObjects:[NSArray arrayWithObjects:newblk, nil]
+                    forKeys:[NSArray arrayWithObjects:@"newBlock", nil]]];
+        }
+        [newblk release];    
     }
+    /* else   // uncomment this else block for additional info about TCP flags
+    {   NSLog(@"connection addPacket -- no data on %d sir but flags %@ %02x",
+            _dport, [pkt finFlag] ? @"FIN" : @"", [pkt tcpHeader]->th_flags);
+    }*/
 
     // check the FIN flag for future sweeping
-    _fin = [pkt finFlag];
+    _fin = _fin || [pkt finFlag];
+    // The above only ever turns on _fin.  This is used to be
+    //   _fin = [pkt finFlag];
+    // but on connection close, the final ACK to the final FIN does not have
+    // its FIN flag set, so it was turning _fin back off.
+    // 
+    // Also consider doing something for the RST flag, cause a lot of
+    // connections can accumulate with no data, just a RST packet.
 
     [_lastUpdate release];
-    _lastUpdate = [[NSDate date] retain]; // now
+    _lastUpdate = [[NSDate date] retain]; // now    
 }
 
--(void)combineAdjacentDataBlocks
+/* This method returns a BOOL indicating whether or not any block combinations
+   occurred.  The purpose of this return is so that addPacket knows whether to
+   broadcast a CTDidAddNewBlockRange, since that message and
+   CTDidCombineBlockRanges should be mutually exclusive for any incorporation
+   of a single packet into this ConnectionTCP.
+   */
+-(BOOL)combineAdjacentDataBlocks
 {
-    BOOL didCombine = YES;
+    BOOL didCombine = NO;
+    BOOL rescanBlocks = YES;
     int i;
     DataBlock *blk, *nextblk;
     NSRange brange, nrange;
 
-    while (didCombine)
+    while (rescanBlocks)
     {
-        didCombine = NO;
+        rescanBlocks = NO;
         for (i = 0; i < [_blockRanges count] - 1; i++)
         {
             blk = [_blockRanges objectAtIndex:i];
@@ -89,23 +142,39 @@
             brange = [blk range];
             nrange = [nextblk range];
             
+            /*
             NSLog(@"brange: %d, %d\tnrange: %d, %d",
                 brange.location, brange.length,
                 nrange.location, nrange.length);
-            
+            */
 
             if (brange.location + brange.length >= nrange.location)
             {
                 [blk combineWithDataBlock:nextblk];
+                [nextblk retain];
                 [_blockRanges removeObjectAtIndex:(i+1)];
+
+                /* inform observers that a block combination has occurred */
+               	[[NSNotificationCenter defaultCenter]
+                    postNotificationName:CTDidCombineBlockRanges
+                    object:self
+                    userInfo:[NSDictionary
+                        dictionaryWithObjects:[NSArray arrayWithObjects:blk, nextblk, nil]
+                        forKeys:[NSArray arrayWithObjects:@"extendedBlock", @"discardedBlock", nil]]];
+                        
+                [nextblk release];
+                rescanBlocks = YES;
                 didCombine = YES;
-                
+
                 /* back up index so that the next pass will include another
                     analysis of this iteration's blk */
                 i--;
             }
         }
     }
+    
+    return didCombine;
+    /* A pseudocode version of the above method follows: */
     // if adjacent block is found, combine with it and issue TADidCombineRanges
     // else keep the block and issue TADidAddNewBlockRange
 
@@ -134,12 +203,15 @@
     while (blk = [e nextObject])
     {
         if ([blk range].length > 0)
-        {   [[blk data] writeToFile:[NSString stringWithFormat:@"%@_%08x_%02d_%u_%u",
-                                      path, self, c, [blk rangeLocation], [blk range].length]
+        {   [[blk data] writeToFile:[NSString stringWithFormat:@"%@_%@_%02d_%u_%u",
+                                     path,
+                            [ConnectionIdentifier identifierForConnection:self],
+                                     c, [blk rangeLocation], [blk range].length]
                         atomically:YES];
                         
-            NSLog([NSString stringWithFormat:@"%@_%08x_%02d_%u_%u",
-                    path, self, c, [blk rangeLocation], [blk range].length]);
+            NSLog([NSString stringWithFormat:@"%@_%@_%02d_%u_%u",
+                    path, [ConnectionIdentifier identifierForConnection:self],
+                    c, [blk rangeLocation], [blk range].length]);
         }
         c++; // NO ITS NOT ITS OBJECTIVE C LOLOLOLOLO
     }

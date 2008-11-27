@@ -17,17 +17,16 @@
 
     NSMutableArray * _pktBuf;
     NSMutableDictionary * _connections;
+    NSTimer * _sweepTimer;
 }
 
 /* Notifications */
-NSString * const TADidCombineBlockRanges;   // = @"TADidCombineBlockRanges";
-NSString * const TADidAddNewBlockRange;     // = @"TADidAddNewBlockRange";
-NSString * const TAWillDeleteConnection;    // = @"TAWillDeleteConnection";
+NSString * const TADidProcessPacket;
 
 -(void)receivedPacketNotification:(NSNotification *)note;
 
 -(void)sweepConnections;
 
 -(NSString *)connectionStatus;
-
+-(void)periodicSweep:(NSTimer *)timer;
 @end

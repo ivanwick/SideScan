@@ -42,9 +42,15 @@
     unsigned int _isn;
 }
 
+/* Notifications */
+NSString * const CTDidCombineBlockRanges;
+NSString * const CTDidAddNewBlockRange;
+NSString * const CTWillBeDiscarded;
+NSString * const CTDidReceiveFIN;
+
 - (id)initWithInitialPacket:(PacketTCP *)pkt;
 - (void)addPacket:(PacketTCP*)pkt;
-- (void)combineAdjacentDataBlocks;
+- (BOOL)combineAdjacentDataBlocks;
 
 - (unsigned short)sourcePort;
 - (unsigned short)destPort;
@@ -55,7 +61,10 @@
 - (unsigned int)isn;
 
 - (NSArray *)dataBlocks;
+- (void)willDiscard;
+
 
 - (void)writeBlocksToFile:(NSString*)path;
+
 
 @end
