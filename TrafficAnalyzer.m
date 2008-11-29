@@ -119,11 +119,11 @@ NSString * const TADidProcessPacket = @"TADidProcessPacket";
             
             [ctcp willDiscard];
         }
-        else
+        /* else
         {
             NSLog(@"keeping a connection last modified %@, %f sec ago sir",
                 [ctcp lastUpdate], -[[ctcp lastUpdate] timeIntervalSinceNow]);
-        }
+        }*/
     }
     
     [_connections removeObjectsForKeys:removeList];

@@ -29,7 +29,7 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 	FILE *iopipe;
 	
      // tcpdump -i en1 -s 0 -U -s 0 -w -
-    char* args[] = {"-i", "en1", "-s", "0", "-U", "-w", "-",
+    char* args[] = {"-i", "en0", "-s", "0", "-U", "-w", "-",
                     "tcp and port 80", NULL};
    
     if (! authorized)

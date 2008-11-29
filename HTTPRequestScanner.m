@@ -15,15 +15,33 @@
 {
     char *b = (char *)[d bytes];
     char *s;
+	char *h;
     NSMutableString *getfile = [[NSMutableString alloc] init];
+	NSMutableString *host    = [[NSMutableString alloc] init];
     
     if (!memcmp("GET ", b, 4))
     {
         s = b+4;
-        while (*s != '\n') { [getfile appendFormat:@"%c", *s]; s++; }
+        while (*s != '\n' && *s != '\r') { [getfile appendFormat:@"%c", *s]; s++; }
 
-        NSLog(@"a GET request sir for %@", getfile);
-    }
+		h=s;
+		do
+		{
+			h = memchr(h+1, 'H', [d length] - (h-b));
+		}
+		while (h != NULL && memcmp("Host: ", h, 6));
+		
+		if (h != NULL)
+		{
+			s = h+6;
+			while (*s != '\n' && *s != '\r') { [host appendFormat:@"%c", *s]; s++; }
+		}
+
+		NSLog(@"a GET request sir for %@%@", host, getfile);
+	}
+	
+	[getfile release];
+	[host release];
 }
 
 

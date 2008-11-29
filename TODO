@@ -26,6 +26,18 @@
   since we don't know if we have or will ever get a complete image data from
   captured traffic.
 
-- DNSResolverScanner to show what DNS names are being resolved.
-- 
+- Change the sweepConnections code to clean up FIN connections only when there
+  is a single datablock, which means (as far as we know) there are no missing
+  blocks.  Then after that resort to timeout.
 
+- Maybe reorganize TrafficAnalyzer or specialize it for TCP traffic only?
+
+Scanner modules:
+- DNSResolverScanner to show what DNS names are being resolved.
+- ImageScanner: each or a combination of
+	PNGScanner
+	JPGScanner
+	GIFScanner
+- HTTPAuthScanner to get digest passwords from HTTP requests
+
+- Make a plugin interface out of the scanner modules
