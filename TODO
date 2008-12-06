@@ -7,6 +7,9 @@
   
 - Figure out whenever an int is being used, whether it would be more appropriate
   to use NSInteger or NSUInteger.
+
++ Change PacketIP to store an NSHost for the src and dst instead of
+  a struct in_addr. (Ended up just making NSHost accessors instead.)
   
 - Change initializers in the Packet class hierarchy to take advantage of late
   binding and dynamic typing, i.e. it may be possible for a direct init from

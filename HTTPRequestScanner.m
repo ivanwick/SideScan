@@ -7,7 +7,7 @@
 //
 
 #import "HTTPRequestScanner.h"
-
+#import "ScannerUtils.h"
 
 @implementation HTTPRequestScanner
 
@@ -25,11 +25,7 @@
         while (*s != '\n' && *s != '\r') { [getfile appendFormat:@"%c", *s]; s++; }
 
 		h=s;
-		do
-		{
-			h = memchr(h+1, 'H', [d length] - (h-b));
-		}
-		while (h != NULL && memcmp("Host: ", h, 6));
+		h = memmem(h+1, [d length] - (h-b), "Host: ", 6);
 		
 		if (h != NULL)
 		{
