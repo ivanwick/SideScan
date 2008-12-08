@@ -33,6 +33,8 @@
 		2CAAD7CE0DE3BB12006838B1 /* PacketTCP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C46515D0DE2972D00F0A2EA /* PacketTCP.m */; };
 		2CD8232A0CDC3F1400CF8239 /* PSBController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD823290CDC3F1400CF8239 /* PSBController.m */; };
 		2CD823AB0CDC614600CF8239 /* PacketStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD823AA0CDC614600CF8239 /* PacketStream.m */; };
+		2CF832550EEB805C0092477E /* ScannerUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CF832530EEB805C0092477E /* ScannerUtils.c */; };
+		2CF832630EEB82F20092477E /* PNGScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF832620EEB82F20092477E /* PNGScanner.m */; };
 		2CFCD8850CE03A17001C1B33 /* wingtip.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCD8840CE03A17001C1B33 /* wingtip.jpg */; };
 		2CFCD8870CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCD8860CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
@@ -100,6 +102,10 @@
 		2CD823290CDC3F1400CF8239 /* PSBController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = PSBController.m; sourceTree = "<group>"; };
 		2CD823A90CDC614600CF8239 /* PacketStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketStream.h; sourceTree = "<group>"; };
 		2CD823AA0CDC614600CF8239 /* PacketStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketStream.m; sourceTree = "<group>"; };
+		2CF832530EEB805C0092477E /* ScannerUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ScannerUtils.c; sourceTree = "<group>"; };
+		2CF832540EEB805C0092477E /* ScannerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerUtils.h; sourceTree = "<group>"; };
+		2CF832610EEB82F20092477E /* PNGScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNGScanner.h; sourceTree = "<group>"; };
+		2CF832620EEB82F20092477E /* PNGScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNGScanner.m; sourceTree = "<group>"; };
 		2CFCD8840CE03A17001C1B33 /* wingtip.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wingtip.jpg; sourceTree = "<group>"; };
 		2CFCD8860CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 128344313412187500isluvliestfa.jpg; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PcapSandbox_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapSandbox_Prefix.pch; sourceTree = "<group>"; };
@@ -132,8 +138,6 @@
 				2C26D1050DEA9F91000CFA47 /* ConnectionTCP.m */,
 				2C1F34BD0DF675F700C4B98A /* TrafficAnalyzer.h */,
 				2C1F34BE0DF675F700C4B98A /* TrafficAnalyzer.m */,
-				2C487E8A0EDD0A4300628DEA /* HTTPRequestScanner.h */,
-				2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */,
 				2C1F34F70DF7013C00C4B98A /* ConnectionIdentifier.h */,
 				2C1F34F80DF7013C00C4B98A /* ConnectionIdentifier.m */,
 				2C1F35D30DF7234E00C4B98A /* DataBlock.h */,
@@ -174,6 +178,7 @@
 		29B97314FDCFA39411CA2CEA /* PcapSandbox */ = {
 			isa = PBXGroup;
 			children = (
+				2CF8325A0EEB816E0092477E /* Scanners */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -249,6 +254,19 @@
 			name = lib;
 			sourceTree = "<group>";
 		};
+		2CF8325A0EEB816E0092477E /* Scanners */ = {
+			isa = PBXGroup;
+			children = (
+				2CF832530EEB805C0092477E /* ScannerUtils.c */,
+				2CF832540EEB805C0092477E /* ScannerUtils.h */,
+				2C487E8A0EDD0A4300628DEA /* HTTPRequestScanner.h */,
+				2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */,
+				2CF832610EEB82F20092477E /* PNGScanner.h */,
+				2CF832620EEB82F20092477E /* PNGScanner.m */,
+			);
+			name = Scanners;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -322,6 +340,8 @@
 				2C1F34FA0DF7013C00C4B98A /* ConnectionIdentifier.m in Sources */,
 				2C1F35D60DF7234E00C4B98A /* DataBlock.m in Sources */,
 				2C487E8C0EDD0A4300628DEA /* HTTPRequestScanner.m in Sources */,
+				2CF832550EEB805C0092477E /* ScannerUtils.c in Sources */,
+				2CF832630EEB82F20092477E /* PNGScanner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
