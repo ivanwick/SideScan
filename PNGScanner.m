@@ -1,15 +1,19 @@
 //
-//  HTTPRequestScanner.m
+//  PNGScanner.m
 //  PcapSandbox
 //
-//  Created by Ivan Wick on 11/25/08.
+//  Created by Ivan Wick on 12/6/08.
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "HTTPRequestScanner.h"
+#import "PNGScanner.h"
 #import "ScannerUtils.h"
 
-@implementation HTTPRequestScanner
+
+const char PNG_SIGNATURE[] = { 0x89, 'P', 'N', 'G', '\r', '\n', 0x1a, '\n' };
+const int   PNG_SIGLENGTH  = 8;
+
+@implementation PNGScanner
 
 - (void)lookForRequestInData:(NSData *)d
 {
@@ -23,7 +27,7 @@
     {
         s = b+4;
         while (*s != '\n' && *s != '\r') { [getfile appendFormat:@"%c", *s]; s++; }
-
+		
 		h = SUmemmem(s+1, [d length] - (s-b), "Host: ", 6);
 		
 		if (h != NULL)
@@ -31,7 +35,7 @@
 			s = h+6;
 			while (*s != '\n' && *s != '\r') { [host appendFormat:@"%c", *s]; s++; }
 		}
-
+		
 		NSLog(@"a GET request sir for %@%@", host, getfile);
 	}
 	
@@ -43,19 +47,19 @@
 - (void)registerAsObserver
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self
-        selector:@selector(receivedCombinedBlocksNotification:)
-		name:CTDidCombineBlockRanges
-        object:nil];
-
+											 selector:@selector(receivedCombinedBlocksNotification:)
+												 name:CTDidCombineBlockRanges
+											   object:nil];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self
-        selector:@selector(receivedAddedBlockNotification:)
-		name:CTDidAddNewBlockRange
-        object:nil];
-
+											 selector:@selector(receivedAddedBlockNotification:)
+												 name:CTDidAddNewBlockRange
+											   object:nil];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self
-        selector:@selector(receivedWillDiscardNotification:)
-		name:CTWillBeDiscarded
-        object:nil];
+											 selector:@selector(receivedWillDiscardNotification:)
+												 name:CTWillBeDiscarded
+											   object:nil];
 }
 
 
@@ -80,7 +84,7 @@
 
 - (void)receivedWillDiscardNotification:(NSNotification *)note
 {
-    NSLog(@"MAKE YOUR TIME");
+    NSLog(@"ORLY YARLY");
 }
 
 
