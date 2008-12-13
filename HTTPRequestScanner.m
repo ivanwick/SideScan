@@ -80,7 +80,7 @@
 
 - (void)receivedWillDiscardNotification:(NSNotification *)note
 {
-    NSLog(@"MAKE YOUR TIME");
+    // NSLog(@"MAKE YOUR TIME");
 }
 
 

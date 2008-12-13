@@ -257,17 +257,49 @@
 			name = lib;
 			sourceTree = "<group>";
 		};
-		2CF8325A0EEB816E0092477E /* Scanners */ = {
+		2CE0505D0EF3DA2200720A78 /* PNG */ = {
 			isa = PBXGroup;
 			children = (
 				2C6104BE0EF0796E0055BC20 /* PNGScan.h */,
 				2C6104BF0EF0796E0055BC20 /* PNGScan.m */,
-				2CF832530EEB805C0092477E /* ScannerUtils.c */,
-				2CF832540EEB805C0092477E /* ScannerUtils.h */,
-				2C487E8A0EDD0A4300628DEA /* HTTPRequestScanner.h */,
-				2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */,
 				2CF832610EEB82F20092477E /* PNGScanner.h */,
 				2CF832620EEB82F20092477E /* PNGScanner.m */,
+			);
+			name = PNG;
+			sourceTree = "<group>";
+		};
+		2CE0505E0EF3DA3B00720A78 /* GIF */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = GIF;
+			sourceTree = "<group>";
+		};
+		2CE0505F0EF3DA4800720A78 /* HTTP Request */ = {
+			isa = PBXGroup;
+			children = (
+				2C487E8A0EDD0A4300628DEA /* HTTPRequestScanner.h */,
+				2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */,
+			);
+			name = "HTTP Request";
+			sourceTree = "<group>";
+		};
+		2CE050600EF3DA6600720A78 /* JPEG */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = JPEG;
+			sourceTree = "<group>";
+		};
+		2CF8325A0EEB816E0092477E /* Scanners */ = {
+			isa = PBXGroup;
+			children = (
+				2CE050600EF3DA6600720A78 /* JPEG */,
+				2CE0505F0EF3DA4800720A78 /* HTTP Request */,
+				2CE0505E0EF3DA3B00720A78 /* GIF */,
+				2CE0505D0EF3DA2200720A78 /* PNG */,
+				2CF832530EEB805C0092477E /* ScannerUtils.c */,
+				2CF832540EEB805C0092477E /* ScannerUtils.h */,
 			);
 			name = Scanners;
 			sourceTree = "<group>";

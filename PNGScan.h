@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "DataBlock.h"
+#import "PNGScanner.h"
 
 // This could also be called a "ScanState"
 // Maybe it will be changed to that by the time I am finished

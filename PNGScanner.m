@@ -7,10 +7,12 @@
 //
 
 #import "PNGScanner.h"
-
+#import "PNGScan.h"
 #import "ScannerUtils.h"
 
 @implementation PNGScanner
+
+NSString * const PNGScannerExtractedImage = @"PNGScannerExtractedImage";
 
 - (void)registerAsObserver
 {
@@ -40,7 +42,9 @@
     
     escan = [self getScanForBlock:extblock];
     dscan = [self getScanForBlock:discblock];
-    
+ 
+    NSLog(@"PNGScanner combinedBlocks -- escan:%@\tdscan:%@", escan, dscan);
+          
     if (dscan != nil)
     {
         if (escan != nil)
@@ -61,9 +65,11 @@
         if (escan == nil)
         {
             [self startNewScanForBlock:extblock];
+            // startNewScanForBlock sends "advance" to the new scan.
         }
     }
-        
+    
+    [escan advance];
 }
 
 - (void)receivedAddedBlockNotification:(NSNotification *)note
@@ -71,6 +77,8 @@
     NSDictionary *uinfo = [note userInfo];
     DataBlock *newblock = [uinfo objectForKey:@"newBlock"];
 
+    NSLog(@"PNGScanner addedBlock");
+          
     [self startNewScanForBlock:newblock];
 }
 
@@ -79,6 +87,9 @@
     PNGScan * scan = [[PNGScan alloc] initWithDataBlock:block];
     
     [self setScan:scan forBlock:block];  // this retains scan and block
+
+    // FIX: do we need to advance here?  maybe just return the new PNGScan andmake
+    // it the calling method's responsibility to advance it.
     [scan advance];
     [scan release];
 }
@@ -92,7 +103,6 @@
     NSEnumerator *enblk = [[conndisc dataBlocks] objectEnumerator];
   	while (b = (DataBlock*)[enblk nextObject])
 	{
-        NSLog(@"block: %@", b);
         scan = [self getScanForBlock:b];
         if (scan != nil)
         {
@@ -100,7 +110,7 @@
             [self removeScanForBlock:b];
         }
     }
-    NSLog(@"ORLY YARLY");
+    // NSLog(@"ORLY YARLY");
 }
 
 -(id)init
@@ -128,22 +138,37 @@
      - Write a dictionary wrapper class to do the NSValue conversion
      - Make a NSValue-storing category over NSMutableDictionary
 */
--(PNGScan *)getScanForBlock:(DataBlock *)block
+//-(PNGScan *)getScanForBlock:(DataBlock *)block
+-(id)getScanForBlock:(DataBlock *)block
 {
-    return [_activeScans objectForKey:[NSValue valueWithBytes:block
-                                                objCType:@encode(DataBlock)]];
+    return [_activeScans objectForKey:[NSValue valueWithBytes:&block
+                                                objCType:@encode(DataBlock *)]];
 }
 
 -(void)removeScanForBlock:(DataBlock *)block
 {
-    [_activeScans removeObjectForKey:[NSValue valueWithBytes:block
-                                                objCType:@encode(DataBlock)]];
+    [_activeScans removeObjectForKey:[NSValue valueWithBytes:&block
+                                                objCType:@encode(DataBlock *)]];
 }
 
--(void)setScan:(PNGScan *)scan forBlock:(DataBlock *)block
+//-(void)setScan:(PNGScan *)scan forBlock:(DataBlock *)block
+-(void)setScan:(id)scan forBlock:(DataBlock *)block
 {
-    [_activeScans setObject:scan forKey:[NSValue valueWithBytes:block
-                                                objCType:@encode(DataBlock)]];
+    [_activeScans setObject:scan forKey:[NSValue valueWithBytes:&block
+                                                objCType:@encode(DataBlock *)]];
+}
+
+-(void)dumpActiveScansComparing:(NSValue*)v
+{
+    NSEnumerator *e = [_activeScans keyEnumerator];
+    NSValue *k;
+    while (k = [e nextObject])
+    {
+        NSLog(@"%@ => %@", k, [_activeScans objectForKey:k]);
+        if ([v isEqual:k])
+        {   NSLog(@"match");
+        }
+    }
 }
 
 @end

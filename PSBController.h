@@ -15,8 +15,10 @@
     PacketStream *pktStream;
 	// PacketAnalyzer *pktAnalyzer;
     TrafficAnalyzer *trafAnalyzer;
+    NSMutableArray *extractedImages;
     
     IBOutlet NSTextView * textArea;
+    IBOutlet NSArrayController *arrayController;
 }
 
 - (IBAction)runTcpdump:(id)sender;
@@ -26,4 +28,7 @@
 
 - (void)connectObservers;
 - (void)setupAuthorizationRef;
+
+-(id)extractedImages;
+// -(id)valueForKey:(NSString*)k;
 @end

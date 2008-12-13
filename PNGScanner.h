@@ -13,12 +13,13 @@
 // the PNGScan is not part of the public interface of this class
 // It's here because of the dictionary wrapper methods at the bottom.
 // FIX: do something about this.
-#import "PNGScan.h"
 
 
 @interface PNGScanner : NSObject {
     NSMutableDictionary * _activeScans;
 }
+
+NSString * const PNGScannerExtractedImage;
 
 - (void)registerAsObserver;
 - (void)startNewScanForBlock:(DataBlock*)block;
@@ -26,8 +27,9 @@
 
 
 // See the implementation notes for these methods
--(PNGScan *)getScanForBlock:(DataBlock *)block;
+-(id)getScanForBlock:(DataBlock *)block;
 -(void)removeScanForBlock:(DataBlock *)block;
--(void)setScan:(PNGScan *)scan forBlock:(DataBlock *)block;
+-(void)setScan:(id)scan forBlock:(DataBlock *)block;
+
 
 @end

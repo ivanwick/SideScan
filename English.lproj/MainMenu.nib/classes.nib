@@ -1,13 +1,45 @@
-{
-    IBClasses = (
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {
-            ACTIONS = {clearLogText = id; runTcpdump = id; showStatus = id; toggleAuth = id; }; 
-            CLASS = PSBController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {textArea = NSTextView; }; 
-            SUPERCLASS = NSObject; 
-        }
-    ); 
-    IBVersion = 1; 
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IBClasses</key>
+	<array>
+		<dict>
+			<key>CLASS</key>
+			<string>FirstResponder</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>clearLogText</key>
+				<string>id</string>
+				<key>runTcpdump</key>
+				<string>id</string>
+				<key>showStatus</key>
+				<string>id</string>
+				<key>toggleAuth</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>PSBController</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>arrayController</key>
+				<string>NSArrayController</string>
+				<key>textArea</key>
+				<string>NSTextView</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+	</array>
+	<key>IBVersion</key>
+	<string>1</string>
+</dict>
+</plist>

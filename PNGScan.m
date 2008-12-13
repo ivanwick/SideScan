@@ -115,8 +115,10 @@ const unsigned int  PNG_CHUNKTAG_LENGTH = 4;
 -(void)publishImage:(NSImage *)img
 {
     NSLog(@"found an image you monsters: %@", img);
-    [[img TIFFRepresentation] writeToFile:[NSString stringWithFormat:@"/Users/ivan/pcapsandbox/imgpub/%x.tiff", img]
-     atomically:NO];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:
+        [NSNotification notificationWithName:PNGScannerExtractedImage
+        object:img]];
 }
 
 // Precondition for this method is that the scan is currently in an inter-image

@@ -10,6 +10,22 @@
 
 char tcpdump_path[] = "/usr/sbin/tcpdump";
 
+-(id) init
+{
+    self = [super init];
+    if (self)
+    {
+        extractedImages = [[NSMutableArray alloc] initWithCapacity:100];
+    }
+    return self;
+}
+
+-(void)dealloc
+{
+    [extractedImages release];
+    [super dealloc];
+}
+
 - (void)alertNotAuthorized
 {
     NSAlert *theAlert = [[NSAlert alloc] init];
@@ -31,7 +47,7 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 	
      // tcpdump -i en1 -s 0 -U -s 0 -w -
     char* args[] = {"-i", "en1", "-s", "0", "-U", "-w", "-",
-                    "tcp and port 80", NULL};
+                    "tcp and src port 80", NULL};
    
     if (! authorized)
     {
@@ -60,6 +76,14 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
                                 
     [[[HTTPRequestScanner alloc] init] registerAsObserver];
     [[[PNGScanner alloc] init] registerAsObserver];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                selector:@selector(receivedExtractedImageNotification:)
+                                name:PNGScannerExtractedImage
+                                object:nil];
+
+
+                                    
 /*
     PacketPipe *pktPipe = [[PacketPipe alloc] initUsingFopen:iopipe];
     PacketAnalyzer *pktAnalyzer = [[PacketAnalyzer alloc] init];
@@ -173,13 +197,47 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 - (IBAction)showStatus:(id)sender
 {
     [textArea insertText:@"STATUS ur mom\n"];
-    [textArea insertText:[trafAnalyzer connectionStatus]];
+    [textArea insertText:[trafAnalyzer connectionStatus]];    
 }
 
 - (IBAction)clearLogText:(id)sender
 {
     [[textArea textStorage] setAttributedString:
         [[[NSAttributedString alloc] initWithString:@""] autorelease]];
+        
+
+    /* this is just here as a positive control for testing the bindings */
+    /*[[NSNotificationCenter defaultCenter]
+        postNotificationName:PNGScannerExtractedImage
+        object:[[NSImage alloc] initWithContentsOfFile:
+            @"/Users/ivan/choptest/full/cheapcontrol.png"]];
+    NSLog(@"sent note");
+    */
 }
+
+-(void)receivedExtractedImageNotification:(NSNotification *)note
+{
+    NSImage * img = [note object];
+    [arrayController addObject:img];
+}
+
+-(id)extractedImages
+{   NSLog(@"extractedImages instead of vfk");
+    return extractedImages;
+}
+
+#if 0
+-(id)valueForKey:(NSString*)k
+{
+    NSLog(@"vfk %@", k);
+    if ([k isEqual:@"extractedImages"])
+    {   return extractedImages;
+    }
+    else
+    {
+        return nil;
+    }
+}
+#endif
 
 @end
