@@ -32,4 +32,5 @@
 */
 -(unsigned int)rangeLocation;
 -(NSComparisonResult)compareRangeLocationWith:(DataBlock *)other;
+
 @end

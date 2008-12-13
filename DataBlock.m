@@ -100,8 +100,9 @@
         sliceBlock = [[DataBlock alloc] initWithInitialPacket: initialSeqNum:;
         [self appendDataBlock:sliceBlock];
         [sliceBlock release];
-        #endif
+        #else
         NSLog(@"combine blocks with nonadjacent ranges??? QUIT YO JIBBA JABBA!!");
+        #endif
     }
     else
     {
