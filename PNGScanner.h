@@ -9,16 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import "ConnectionTCP.h"
 
-// this should actually be "internal" i.e. in the implementation file, since
-// the PNGScan is not part of the public interface of this class
-// It's here because of the dictionary wrapper methods at the bottom.
-// FIX: do something about this.
-
-
 @interface PNGScanner : NSObject {
     NSMutableDictionary * _activeScans;
 }
 
+// PNGScannerDidExtractImage ??
 NSString * const PNGScannerExtractedImage;
 
 - (void)registerAsObserver;

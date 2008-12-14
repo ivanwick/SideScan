@@ -64,16 +64,7 @@ const unsigned int  PNG_CHUNKTAG_LENGTH = 4;
     NSData *d = [_block data];
     const void *dbytes = [d bytes];
     void * lastChunk;
-
-    /*
-    NSLog(@"advanceByChunk imageoffset:%x lastchunkoffset:%x",
-            _imageStartOffset, _lastChunkOffset);
-    
-    NSLog(@"advanceByChunk %c %x", ((char*)dbytes)[_lastChunkOffset+4], ((char*)dbytes)[_lastChunkOffset]);
-    NSLog(@"advanceByChunk %c %x", ((char*)dbytes)[_lastChunkOffset+5], ((char*)dbytes)[_lastChunkOffset+1]);
-    NSLog(@"advanceByChunk %c %x", ((char*)dbytes)[_lastChunkOffset+6], ((char*)dbytes)[_lastChunkOffset+2]);
-    NSLog(@"advanceByChunk %c %x", ((char*)dbytes)[_lastChunkOffset+7], ((char*)dbytes)[_lastChunkOffset+3]);
-    */
+    unsigned int nextChunkOffset;
 
     // Before you check the chunk size, make sure there is enough space for it!
     if ([d length] - _lastChunkOffset < 4)
@@ -90,25 +81,30 @@ const unsigned int  PNG_CHUNKTAG_LENGTH = 4;
         _scanPosOffset = [d length];
         return;
     }
-    
-    // advance the chunk since it looks like there is enough data
-    _lastChunkOffset += [PNGScan lengthForChunk:lastChunk];
-    
+
+    nextChunkOffset = _lastChunkOffset + [PNGScan lengthForChunk:lastChunk];
+	
     // see if we just finished an image
     if ([PNGScan isEndChunk:lastChunk])
     {
         // publish the image we found
         [self publishImage:
-            [[NSImage alloc] initWithData:
-                    [d subdataWithRange:NSMakeRange(_imageStartOffset,
-                                        (_lastChunkOffset - _imageStartOffset))]]];
-        
-        // tag it in _taggedRanges so that it doesn't get parsed out again
+            [[[NSImage alloc] initWithData:
+                [d subdataWithRange:NSMakeRange(_imageStartOffset,
+                                        (nextChunkOffset - _imageStartOffset))]]
+                autorelease]];
+
+        // FIX: tag it in _taggedRanges so that it doesn't get parsed out again
         
         // reset scan state
-        _scanPosOffset = _lastChunkOffset + [PNGScan lengthForChunk:lastChunk];
+        _scanPosOffset = nextChunkOffset;
         _followingImage = NO;
         _imageStartOffset = 0;      // eh might as well
+    }
+    else
+    {
+        _lastChunkOffset = nextChunkOffset;
+        _scanPosOffset = nextChunkOffset;
     }
 }
 
@@ -220,7 +216,7 @@ const unsigned int  PNG_CHUNKTAG_LENGTH = 4;
 +(unsigned int)lengthForChunk:(void*)c
 {
     return PNG_CHUNKLEN_LENGTH
-        + /*NSSwapBigIntToHost*/(((unsigned int*)c)[0])  // data length
+        + NSSwapBigIntToHost(((unsigned int*)c)[0])  // data length
         + PNG_CHECKSUM_LENGTH
         + PNG_CHUNKTAG_LENGTH;
 }

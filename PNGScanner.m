@@ -43,7 +43,7 @@ NSString * const PNGScannerExtractedImage = @"PNGScannerExtractedImage";
     escan = [self getScanForBlock:extblock];
     dscan = [self getScanForBlock:discblock];
  
-    NSLog(@"PNGScanner combinedBlocks -- escan:%@\tdscan:%@", escan, dscan);
+    // NSLog(@"PNGScanner combinedBlocks -- escan:%@\tdscan:%@", escan, dscan);
           
     if (dscan != nil)
     {
