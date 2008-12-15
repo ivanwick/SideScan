@@ -22,7 +22,8 @@
     // by block combination and that might invalidate pointers to actual memory.
     unsigned int _imageStartOffset;
     unsigned int _lastChunkOffset;
-    unsigned int _scanPosOffset;	
+    unsigned int _scanPosOffset;
+    unsigned int _sigScanOffset;
 }
 
 

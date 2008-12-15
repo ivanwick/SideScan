@@ -15,7 +15,7 @@ const char			JFIF_SOI_APP0[] = { 0xff, 0xd8, 0xff, 0xe0 };
 const unsigned int	JFIF_SOI_APP0_LENGTH = 4;
 const unsigned int	JFIF_APP0LEN_LENGTH = 2;
 const char			JFIF_APP0_IDENTIFIER[] = "JFIF";  // yes, null terminated
-const char			JFIF_APP0_IDENTIFIER_LENGTH = 5;
+const char			JFIF_APP0_IDENTIFIER_LENGTH = 5;  // yes, include the \0
 const char			JFIF_EOI[] = { 0xff, 0xd9 };
 const char			JFIF_EOI_LENGTH = 2;
 
@@ -28,6 +28,7 @@ const char			JFIF_EOI_LENGTH = 2;
 		_followingImage = NO;
 		
 		_scanPosOffset = 0;
+        _sigScanOffset = 0;
 		_block = [db retain];
 	}
 	return self;
@@ -70,46 +71,44 @@ const char			JFIF_EOI_LENGTH = 2;
 	const void *dbytes = [d bytes];
 	void *newPos;
 	unsigned int newPosOffset;
-	unsigned int possibleImageStartOffset;
 	
     // FIX: This needs to be changed so that the signature scan avoids regions
     // that are tagged.
-	newPos = SUmemmem(dbytes + _scanPosOffset, [d length] - _scanPosOffset,
+	newPos = SUmemmem(dbytes + _sigScanOffset, [d length] - _sigScanOffset,
 					  JFIF_SOI_APP0, JFIF_SOI_APP0_LENGTH);
+	newPosOffset = (newPos - dbytes);
 	
 	if (newPos == NULL)
 	{
 		_scanPosOffset = [d length];
+        _sigScanOffset = [d length];
 		return;
 	}
+    
+    _sigScanOffset = newPosOffset;
 	
-	newPosOffset = (newPos - dbytes);
-
 	// bail out if there is not enough data for the rest of the signature
 	if ( newPosOffset + JFIF_SOI_APP0_LENGTH
 	                  + JFIF_APP0LEN_LENGTH
 					  + JFIF_APP0_IDENTIFIER_LENGTH
 		> [d length] )
 	{
-		_scanPosOffset = newPosOffset;
 		return;
 	}
 
-	// safe the beginning of the SOI cause we are about to overwrite newpos
-	possibleImageStartOffset = newPosOffset;
-
-	newPos += JFIF_SOI_APP0_LENGTH + JFIF_APP0LEN_LENGTH;
+	newPos       += JFIF_SOI_APP0_LENGTH + JFIF_APP0LEN_LENGTH;
 	newPosOffset += JFIF_SOI_APP0_LENGTH + JFIF_APP0LEN_LENGTH;
 
 	if (0 != memcmp(newPos, JFIF_APP0_IDENTIFIER, JFIF_APP0_IDENTIFIER_LENGTH))
 	{
-		_scanPosOffset = possibleImageStartOffset + JFIF_SOI_APP0_LENGTH;
+        _sigScanOffset += JFIF_SOI_APP0_LENGTH;
+		_scanPosOffset += JFIF_SOI_APP0_LENGTH;
 		return;
 	}
 
 	// if control reaches here without having returned early, REAL SIGNATURE
 	// change state of the scan
-    _imageStartOffset = possibleImageStartOffset;
+    _imageStartOffset = _sigScanOffset;
     _scanPosOffset = newPosOffset + JFIF_APP0_IDENTIFIER_LENGTH;
     _followingImage = YES;
 }
@@ -144,7 +143,8 @@ const char			JFIF_EOI_LENGTH = 2;
         // FIX: tag it in _taggedRanges so that it doesn't get parsed out again
         
         // reset scan state
-        _scanPosOffset = (imgEnd - dbytes);
+        _sigScanOffset = (imgEnd - dbytes);
+        _scanPosOffset = _sigScanOffset;
         _followingImage = NO;
         _imageStartOffset = 0;      // eh might as well
 	}
