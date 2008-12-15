@@ -5,6 +5,8 @@
 // this is only here because i am hardcoding this scanner in
 #import "HTTPRequestScanner.h"
 #import "PNGScanner.h"
+#import "JFIFScanner.h"
+#import "GIFScanner.h"
 
 @implementation PSBController
 
@@ -75,13 +77,24 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 								object:pktStream];
                                 
     [[[HTTPRequestScanner alloc] init] registerAsObserver];
-    [[[PNGScanner alloc] init] registerAsObserver];
     
+    [[[PNGScanner alloc] init] registerAsObserver];    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                 selector:@selector(receivedExtractedImageNotification:)
                                 name:PNGScannerExtractedImage
                                 object:nil];
 
+    [[[JFIFScanner alloc] init] registerAsObserver];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                selector:@selector(receivedExtractedImageNotification:)
+                                name:JFIFScannerExtractedImage
+                                object:nil];
+    
+    [[[GIFScanner alloc] init] registerAsObserver];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                selector:@selector(receivedExtractedImageNotification:)
+                                name:GIFScannerExtractedImage
+                                object:nil];
 
                                     
 /*
@@ -221,10 +234,11 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
     [arrayController addObject:img];
 }
 
--(id)extractedImages
-{   NSLog(@"extractedImages instead of vfk");
-    return extractedImages;
-}
+-(id)extractedImages	{ return extractedImages; }
+-(BOOL)isHUDVisible		{ return isHUDVisible; }
+-(void)setIsHUDVisible:(BOOL)b	{ isHUDVisible = b; }
+
+
 
 #if 0
 -(id)valueForKey:(NSString*)k

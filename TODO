@@ -44,3 +44,14 @@ Scanner modules:
 - HTTPAuthScanner to get digest passwords from HTTP requests
 
 - Make a plugin interface out of the scanner modules
+
++ Fix PNGScan advanceByChunk _lastChunk code
+- Unit tests for the above two items?
+
+- Refactor image scanners.  Most of JFIFScann(er) was straight c&p from
+  PNGScann(er).
+
+- Go over JFIFScan advanceToSOI code to make sure it's correct.
+- Check JFIFScanner -advanceToSOI to see if it needs to save the possible
+  signature location when no data is left, so that the -advance loop can still
+  terminate.  This is implemented in GIFScan so see that for reference.

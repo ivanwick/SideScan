@@ -19,6 +19,8 @@
     
     IBOutlet NSTextView * textArea;
     IBOutlet NSArrayController *arrayController;
+	
+	BOOL isHUDVisible;
 }
 
 - (IBAction)runTcpdump:(id)sender;
@@ -26,9 +28,12 @@
 - (IBAction)showStatus:(id)sender;
 - (IBAction)clearLogText:(id)sender;
 
+
 - (void)connectObservers;
 - (void)setupAuthorizationRef;
 
 -(id)extractedImages;
+-(BOOL)isHUDVisible;
+-(void)setIsHUDVisible:(BOOL)b;
 // -(id)valueForKey:(NSString*)k;
 @end

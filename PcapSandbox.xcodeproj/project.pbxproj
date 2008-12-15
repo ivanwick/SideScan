@@ -25,6 +25,10 @@
 		2C46504A0DE27A4C00F0A2EA /* PacketDatalink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */; };
 		2C46504B0DE27A4C00F0A2EA /* PacketDatalink.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */; };
 		2C487E8C0EDD0A4300628DEA /* HTTPRequestScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */; };
+		2C51971B0EF4ADC1009038AC /* JFIFScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C51971A0EF4ADC1009038AC /* JFIFScanner.m */; };
+		2C5198AB0EF4B145009038AC /* JFIFScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5198AA0EF4B145009038AC /* JFIFScan.m */; };
+		2C519BAC0EF5DD39009038AC /* GIFScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C519BAB0EF5DD39009038AC /* GIFScanner.m */; };
+		2C519BB10EF5DD7F009038AC /* GIFScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C519BB00EF5DD7F009038AC /* GIFScan.m */; };
 		2C6104C00EF0796E0055BC20 /* PNGScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6104BF0EF0796E0055BC20 /* PNGScan.m */; };
 		2C6A4D370CE5900500D831EB /* libpcap.0.9.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */; };
 		2C6A4D520CE590EB00D831EB /* libpcap.0.9.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */; };
@@ -94,6 +98,14 @@
 		2C46515D0DE2972D00F0A2EA /* PacketTCP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketTCP.m; sourceTree = "<group>"; };
 		2C487E8A0EDD0A4300628DEA /* HTTPRequestScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequestScanner.h; sourceTree = "<group>"; };
 		2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequestScanner.m; sourceTree = "<group>"; };
+		2C5197190EF4ADC1009038AC /* JFIFScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFIFScanner.h; sourceTree = "<group>"; };
+		2C51971A0EF4ADC1009038AC /* JFIFScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFIFScanner.m; sourceTree = "<group>"; };
+		2C5198A90EF4B145009038AC /* JFIFScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFIFScan.h; sourceTree = "<group>"; };
+		2C5198AA0EF4B145009038AC /* JFIFScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFIFScan.m; sourceTree = "<group>"; };
+		2C519BAA0EF5DD39009038AC /* GIFScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIFScanner.h; sourceTree = "<group>"; };
+		2C519BAB0EF5DD39009038AC /* GIFScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIFScanner.m; sourceTree = "<group>"; };
+		2C519BAF0EF5DD7F009038AC /* GIFScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIFScan.h; sourceTree = "<group>"; };
+		2C519BB00EF5DD7F009038AC /* GIFScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIFScan.m; sourceTree = "<group>"; };
 		2C6104BE0EF0796E0055BC20 /* PNGScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNGScan.h; sourceTree = "<group>"; };
 		2C6104BF0EF0796E0055BC20 /* PNGScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNGScan.m; sourceTree = "<group>"; };
 		2C6A4D360CE5900500D831EB /* libpcap.0.9.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libpcap.0.9.8.dylib; sourceTree = "<group>"; };
@@ -271,6 +283,10 @@
 		2CE0505E0EF3DA3B00720A78 /* GIF */ = {
 			isa = PBXGroup;
 			children = (
+				2C519BAA0EF5DD39009038AC /* GIFScanner.h */,
+				2C519BAB0EF5DD39009038AC /* GIFScanner.m */,
+				2C519BAF0EF5DD7F009038AC /* GIFScan.h */,
+				2C519BB00EF5DD7F009038AC /* GIFScan.m */,
 			);
 			name = GIF;
 			sourceTree = "<group>";
@@ -284,17 +300,21 @@
 			name = "HTTP Request";
 			sourceTree = "<group>";
 		};
-		2CE050600EF3DA6600720A78 /* JPEG */ = {
+		2CE050600EF3DA6600720A78 /* JFIF (JPEG) */ = {
 			isa = PBXGroup;
 			children = (
+				2C5197190EF4ADC1009038AC /* JFIFScanner.h */,
+				2C51971A0EF4ADC1009038AC /* JFIFScanner.m */,
+				2C5198A90EF4B145009038AC /* JFIFScan.h */,
+				2C5198AA0EF4B145009038AC /* JFIFScan.m */,
 			);
-			name = JPEG;
+			name = "JFIF (JPEG)";
 			sourceTree = "<group>";
 		};
 		2CF8325A0EEB816E0092477E /* Scanners */ = {
 			isa = PBXGroup;
 			children = (
-				2CE050600EF3DA6600720A78 /* JPEG */,
+				2CE050600EF3DA6600720A78 /* JFIF (JPEG) */,
 				2CE0505F0EF3DA4800720A78 /* HTTP Request */,
 				2CE0505E0EF3DA3B00720A78 /* GIF */,
 				2CE0505D0EF3DA2200720A78 /* PNG */,
@@ -380,6 +400,10 @@
 				2CF832550EEB805C0092477E /* ScannerUtils.c in Sources */,
 				2CF832630EEB82F20092477E /* PNGScanner.m in Sources */,
 				2C6104C00EF0796E0055BC20 /* PNGScan.m in Sources */,
+				2C51971B0EF4ADC1009038AC /* JFIFScanner.m in Sources */,
+				2C5198AB0EF4B145009038AC /* JFIFScan.m in Sources */,
+				2C519BAC0EF5DD39009038AC /* GIFScanner.m in Sources */,
+				2C519BB10EF5DD7F009038AC /* GIFScan.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
