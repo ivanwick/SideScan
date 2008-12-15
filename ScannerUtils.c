@@ -8,6 +8,7 @@
  */
 
 #include "ScannerUtils.h"
+#include <string.h>
 
 /* Darwin has no memmem implementation, this one is ripped from the
    uClibc-0.9.28 source */  /* Taken from OpenWRT kallsyms.c */

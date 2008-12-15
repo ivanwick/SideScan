@@ -8,7 +8,6 @@
 
 #import "PNGScanner.h"
 #import "PNGScan.h"
-#import "ScannerUtils.h"
 
 @implementation PNGScanner
 

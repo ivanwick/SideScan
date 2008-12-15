@@ -8,6 +8,7 @@
 
 #import "PNGScan.h"
 #import "ScannerUtils.h"
+#import "PNGScanner.h"
 
 const char          PNG_SIGNATURE[] = { 0x89, 'P', 'N', 'G', '\r', '\n', 0x1a, '\n' };
 const unsigned int  PNG_SIGLENGTH  = 8;
