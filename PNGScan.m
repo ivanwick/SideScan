@@ -27,6 +27,7 @@ const unsigned int  PNG_CHUNKTAG_LENGTH = 4;
         _followingImage = NO;
     
         _scanPosOffset = 0;
+        _sigScanOffset = 0;
         _block = [db retain];
     }
     return self;
@@ -99,6 +100,7 @@ const unsigned int  PNG_CHUNKTAG_LENGTH = 4;
         
         // reset scan state
         _scanPosOffset = nextChunkOffset;
+        _sigScanOffset = nextChunkOffset;
         _followingImage = NO;
         _imageStartOffset = 0;      // eh might as well
     }
@@ -133,12 +135,13 @@ const unsigned int  PNG_CHUNKTAG_LENGTH = 4;
     
     // FIX: This needs to be changed so that the signature scan avoids regions
     // that are tagged.
-    newPos = SUmemmem(dbytes + _scanPosOffset, [d length] - _scanPosOffset,
+    newPos = SUmemmem(dbytes + _sigScanOffset, [d length] - _sigScanOffset,
                       PNG_SIGNATURE, PNG_SIGLENGTH);
                        
 
     if (newPos == NULL)  // nothing found
     {
+        _sigScanOffset = [d length] - PNG_SIGLENGTH;
         _scanPosOffset = [d length];
     }
     else

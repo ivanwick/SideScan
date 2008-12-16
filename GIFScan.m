@@ -58,8 +58,9 @@ void * searchGIFHeaders(const void *haystack, size_t haystack_len)
     hdrOffset = hdr - dbytes;
 
     if (hdr == NULL)
-    {   _sigScanOffset = [d length];
+    {
         _scanOffset = [d length];
+        _sigScanOffset = [d length] - GIF_HEADER_LENGTH;
         return;
     }
     

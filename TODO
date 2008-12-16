@@ -55,3 +55,11 @@ Scanner modules:
 + Check JFIFScanner -advanceToSOI to see if it needs to save the possible
   signature location when no data is left, so that the -advance loop can still
   terminate.  This is implemented in GIFScan so see that for reference.
+  
++ All of the advanceToSignature/SOI/Header methods need to be fixed:
+  a partial header occurring at the end of the block will be bypassed since
+  the _sigScanPos is advanced beyond it.
+  _sigScanPos can be advanced to
+    [d length] - LENGTH_OF_WHATEVER_YOU_RE_SEARCHING_FOR_WITH_MEMMEM
+  so that partial signatures are not skipped but everything up to near the end
+  can be.

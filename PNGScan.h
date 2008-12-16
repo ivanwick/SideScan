@@ -24,6 +24,7 @@
     unsigned int _imageStartOffset;
     unsigned int _lastChunkOffset;
     unsigned int _scanPosOffset;
+    unsigned int _sigScanOffset;
 }
 
 

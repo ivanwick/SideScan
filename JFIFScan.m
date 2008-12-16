@@ -81,7 +81,7 @@ const char			JFIF_EOI_LENGTH = 2;
 	if (newPos == NULL)
 	{
 		_scanPosOffset = [d length];
-        _sigScanOffset = [d length];
+        _sigScanOffset = [d length] - JFIF_SOI_APP0_LENGTH;
 		return;
 	}
     
@@ -93,6 +93,7 @@ const char			JFIF_EOI_LENGTH = 2;
 					  + JFIF_APP0_IDENTIFIER_LENGTH
 		> [d length] )
 	{
+        _scanPosOffset = [d length];
 		return;
 	}
 
@@ -102,7 +103,7 @@ const char			JFIF_EOI_LENGTH = 2;
 	if (0 != memcmp(newPos, JFIF_APP0_IDENTIFIER, JFIF_APP0_IDENTIFIER_LENGTH))
 	{
         _sigScanOffset += JFIF_SOI_APP0_LENGTH;
-		_scanPosOffset += JFIF_SOI_APP0_LENGTH;
+		_scanPosOffset = _sigScanOffset;
 		return;
 	}
 
