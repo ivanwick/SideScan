@@ -18,6 +18,9 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
     if (self)
     {
         extractedImages = [[NSMutableArray alloc] initWithCapacity:100];
+
+        authorizationRef = NULL;
+        authorized = NO;
     }
     return self;
 }
@@ -42,32 +45,6 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
     [theAlert release];
 }
 
-- (IBAction)runTcpdump:(id)sender
-{
-    OSStatus err = 0;
-	FILE *iopipe;
-	
-     // tcpdump -i en1 -s 0 -U -s 0 -w -
-    char* args[] = {"-i", "en1", "-s", "0", "-U", "-w", "-",
-                    "tcp and src port 80", NULL};
-   
-    if (! authorized)
-    {
-        [self alertNotAuthorized];
-    }
-    else
-    {
-        err = AuthorizationExecuteWithPrivileges(authorizationRef,
-                tcpdump_path, 0, args, &iopipe);
-	
-		pktStream = [[PacketStream alloc] initWithFilePtr:iopipe];
-		// pktAnalyzer = [[PacketAnalyzer alloc] init];
-        trafAnalyzer = [[TrafficAnalyzer alloc] init];
-		[self connectObservers];
-                
-		[pktStream monitorInBackgroundAndNotify];
-    }
-}
 
 - (void)connectObservers
 {
@@ -120,7 +97,7 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
     AuthorizationRights rights;
     AuthorizationFlags flags;
     AuthorizationItem items[1];
-    OSStatus err = 0;
+    OSStatus err = noErr;
     
     if (authorized)
     {
@@ -134,6 +111,7 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
     }
     else
     {
+        [self setupAuthorizationRef];
         items[0].name = kAuthorizationRightExecute;
         items[0].value = tcpdump_path;
         items[0].valueLength = strlen(tcpdump_path);
@@ -172,10 +150,8 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 
 - (void)awakeFromNib
 {
-    authorizationRef = NULL;
-    authorized = NO;
-
-    [self setupAuthorizationRef];
+    // actually this is getting called in the toggleauth action method
+    //[self setupAuthorizationRef];
 }
 
 - (void)setupAuthorizationRef
@@ -210,7 +186,12 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 - (IBAction)showStatus:(id)sender
 {
     [textArea insertText:@"STATUS ur mom\n"];
-    [textArea insertText:[trafAnalyzer connectionStatus]];    
+    if (trafAnalyzer)
+    {   [textArea insertText:[trafAnalyzer connectionStatus]];
+    }
+    else
+    {   [textArea insertText:@"Traffic Analyzer not initialized yet\n"];
+    }
 }
 
 - (IBAction)clearLogText:(id)sender
@@ -232,6 +213,7 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 {
     NSImage * img = [note object];
     [arrayController addObject:img];
+    [fiView displayImage:img];
 }
 
 -(id)extractedImages	{ return extractedImages; }
@@ -253,5 +235,84 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
     }
 }
 #endif
+
+
+
+- (void)runTcpdumpWithDevice:(NSString *)dev filter:(NSString *)filt
+{
+    OSStatus err = 0;
+	FILE *iopipe;
+	
+     // tcpdump -i en1 -s 0 -U -s 0 -w - tcp and src port 80
+    char* args[] = {"-i", (char*)[dev UTF8String], "-s", "0", "-U", "-w", "-",
+                    (char*)[filt UTF8String], NULL};
+   
+    if (! authorized)
+    {
+        [self alertNotAuthorized];
+    }
+    else
+    {
+        err = AuthorizationExecuteWithPrivileges(authorizationRef,
+                tcpdump_path, 0, args, &iopipe);
+	
+		pktStream = [[PacketStream alloc] initWithFilePtr:iopipe];
+		// pktAnalyzer = [[PacketAnalyzer alloc] init];
+        trafAnalyzer = [[TrafficAnalyzer alloc] init];
+		[self connectObservers];
+        
+		[pktStream monitorInBackgroundAndNotify];
+        //[sender setEnabled:NO];
+    }
+}
+
+
+//- (void) loadAndSchedulePcapConfig
+- (IBAction)showPcapConfigSheet:(id)sender;
+{
+    [NSBundle loadNibNamed:@"PcapConfigSheet" owner:self];
+
+    // what used to be set up in the next 2 lines is taken care of by
+    // the array controller in the nib now.
+    //[pcapConfigSheet setDeviceList:[PcapUtilities allInterfaces]];
+    //[pcapConfigSheet setDefaultFilter:@"tcp port 80 and not arp"];
+    
+    /* What really happens when this scheduled after "delay of 0" is that it
+       will run during the next iteration of the event loop.
+       All of the NSWindow loading etc. is expected to be done by then, so that
+       the sheet has a window it can be attached to.
+       However, I have not found definitive verification of this mechanism in
+       the docs, because it seems to work so I haven't looked.  */
+    [self performSelector:@selector(displayPcapConfigSheet)
+        withObject:self
+        afterDelay:0];
+
+}
+
+- (void) displayPcapConfigSheet
+{
+    [NSApp beginSheet: pcapConfigSheet
+        modalForWindow: mainWindow
+        modalDelegate: self
+        didEndSelector: @selector(didEndSheet:returnCode:contextInfo:)
+        contextInfo: nil];
+}
+
+-(void) didEndSheet:(NSPanel *)theSheet returnCode:(int)returnCode
+    contextInfo:(void *)contextInfo
+{
+    if (returnCode == PCSContinueButton)
+    {
+        [self runTcpdumpWithDevice:[pcapConfigSheet device]
+                            filter:[pcapConfigSheet filter]];
+        [theSheet orderOut:self];
+    }
+    else
+    {
+        NSLog(@"%@: PCSCancelButton", self);
+        //[self close];
+    }
+}
+
 
 @end

@@ -7,11 +7,13 @@
 #import "PacketStream.h"
 //#import "PacketAnalyzer.h"
 #import "TrafficAnalyzer.h"
+#import "FlyingImagesView.h"
+#import "PcapConfigSheet.h"
 
 @interface PSBController : NSObject
 {
     AuthorizationRef authorizationRef;
-    bool authorized;
+    BOOL authorized;
     PacketStream *pktStream;
 	// PacketAnalyzer *pktAnalyzer;
     TrafficAnalyzer *trafAnalyzer;
@@ -21,9 +23,15 @@
     IBOutlet NSArrayController *arrayController;
 	
 	BOOL isHUDVisible;
+    
+    IBOutlet FlyingImagesView * fiView;
+    
+    IBOutlet PcapConfigSheet * pcapConfigSheet;
+    IBOutlet NSWindow * mainWindow;
 }
 
-- (IBAction)runTcpdump:(id)sender;
+- (IBAction)showPcapConfigSheet:(id)sender;
+
 - (IBAction)toggleAuth:(id)sender;
 - (IBAction)showStatus:(id)sender;
 - (IBAction)clearLogText:(id)sender;
