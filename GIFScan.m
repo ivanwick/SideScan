@@ -261,6 +261,11 @@ void * searchGIFHeaders(const void *haystack, size_t haystack_len)
 -(void)finalize
 {
     // FIX: publish what you got so far
+    [self advance];
+    if (_state != GSInterimage)
+    {
+        NSLog(@"GIFScan publish what you got");
+    }
 
 #if 0
     // diagnostics
