@@ -140,7 +140,7 @@ const char			JFIF_EOI_LENGTH = 2;
 					NSMakeRange(_imageStartOffset,
 								((imgEnd - dbytes) - _imageStartOffset))]]
 				autorelease]];
-		
+
         // FIX: tag it in _taggedRanges so that it doesn't get parsed out again
         
         // reset scan state
@@ -206,10 +206,9 @@ const char			JFIF_EOI_LENGTH = 2;
 
 -(void)finalize
 {
-    NSLog(@"JFIFScan finalize");
     if (_followingImage)
     {
-        NSLog(@"publish what you got. but not really.");
+        NSLog(@"JFIFScan publish what you got. but not really.");
     }
 }
 

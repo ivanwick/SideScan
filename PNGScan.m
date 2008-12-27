@@ -209,10 +209,9 @@ const unsigned int  PNG_CHUNKTAG_LENGTH = 4;
 
 -(void)finalize
 {
-    NSLog(@"PNGScan finalize");
     if (_followingImage)
     {
-        NSLog(@"publish what you got.");
+        NSLog(@"PNGScan: publish what you got.");
     }
 }
 

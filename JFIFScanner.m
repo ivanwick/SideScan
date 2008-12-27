@@ -53,8 +53,6 @@ NSString * const JFIFScannerExtractedImage = @"JFIFScannerExtractedImage";
     escan = [self getScanForBlock:extblock];
     dscan = [self getScanForBlock:discblock];
 	
-    NSLog(@"JFIFScanner combinedBlocks -- escan:%@\tdscan:%@", escan, dscan);
-	
     if (dscan != nil)
     {
         if (escan != nil)
@@ -86,8 +84,6 @@ NSString * const JFIFScannerExtractedImage = @"JFIFScannerExtractedImage";
 {
     NSDictionary *uinfo = [note userInfo];
     DataBlock *newblock = [uinfo objectForKey:@"newBlock"];
-	
-    NSLog(@"JFIFScanner addedBlock");
 	
     [self startNewScanForBlock:newblock];
 }

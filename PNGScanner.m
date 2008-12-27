@@ -76,8 +76,6 @@ NSString * const PNGScannerExtractedImage = @"PNGScannerExtractedImage";
     NSDictionary *uinfo = [note userInfo];
     DataBlock *newblock = [uinfo objectForKey:@"newBlock"];
 
-    NSLog(@"PNGScanner addedBlock");
-          
     [self startNewScanForBlock:newblock];
 }
 
