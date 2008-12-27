@@ -12,6 +12,7 @@
 		2C03836B0DE25D3500E6B7D4 /* PacketEthernet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0383690DE25D3500E6B7D4 /* PacketEthernet.m */; };
 		2C03836E0DE25D5400E6B7D4 /* PacketIP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C03836C0DE25D5400E6B7D4 /* PacketIP.h */; };
 		2C03836F0DE25D5400E6B7D4 /* PacketIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C03836D0DE25D5400E6B7D4 /* PacketIP.m */; };
+		2C0C1D050EF75CB800146E53 /* ImageViewBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0C1D040EF75CB800146E53 /* ImageViewBox.m */; };
 		2C1F34BF0DF675F700C4B98A /* TrafficAnalyzer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C1F34BD0DF675F700C4B98A /* TrafficAnalyzer.h */; };
 		2C1F34C00DF675F700C4B98A /* TrafficAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F34BE0DF675F700C4B98A /* TrafficAnalyzer.m */; };
 		2C1F34F90DF7013C00C4B98A /* ConnectionIdentifier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C1F34F70DF7013C00C4B98A /* ConnectionIdentifier.h */; };
@@ -22,9 +23,14 @@
 		2C26D1070DEA9F91000CFA47 /* ConnectionTCP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C26D1050DEA9F91000CFA47 /* ConnectionTCP.m */; };
 		2C30D79B0DE3F3CF0086A3A1 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 2C30D79A0DE3F3CF0086A3A1 /* TODO */; };
 		2C41025F0DEA0B2C00B2EC12 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C41022A0DEA0B2C00B2EC12 /* Security.framework */; };
+		2C4490990EFEFD9C00D75761 /* PcapConfigSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4490980EFEFD9C00D75761 /* PcapConfigSheet.m */; };
+		2C4490B30EFEFDED00D75761 /* SCNetworkInterfaceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4490B20EFEFDED00D75761 /* SCNetworkInterfaceList.m */; };
+		2C4490C50EFEFE8C00D75761 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4490C40EFEFE8C00D75761 /* SystemConfiguration.framework */; };
+		2C4490CA0EFEFEDA00D75761 /* PcapConfigSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4490C90EFEFEDA00D75761 /* PcapConfigSheet.xib */; };
 		2C46504A0DE27A4C00F0A2EA /* PacketDatalink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */; };
 		2C46504B0DE27A4C00F0A2EA /* PacketDatalink.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */; };
 		2C487E8C0EDD0A4300628DEA /* HTTPRequestScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */; };
+		2C5110E40EF796FF00196969 /* icon03.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2C5110E30EF796FF00196969 /* icon03.icns */; };
 		2C51971B0EF4ADC1009038AC /* JFIFScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C51971A0EF4ADC1009038AC /* JFIFScanner.m */; };
 		2C5198AB0EF4B145009038AC /* JFIFScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C5198AA0EF4B145009038AC /* JFIFScan.m */; };
 		2C519BAC0EF5DD39009038AC /* GIFScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C519BAB0EF5DD39009038AC /* GIFScanner.m */; };
@@ -40,6 +46,9 @@
 		2CD823AB0CDC614600CF8239 /* PacketStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD823AA0CDC614600CF8239 /* PacketStream.m */; };
 		2CF832550EEB805C0092477E /* ScannerUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CF832530EEB805C0092477E /* ScannerUtils.c */; };
 		2CF832630EEB82F20092477E /* PNGScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF832620EEB82F20092477E /* PNGScanner.m */; };
+		2CF8BD160EFB80E600852D77 /* FlyingImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF8BD130EFB80E600852D77 /* FlyingImagesView.m */; };
+		2CF8BD170EFB80E600852D77 /* NSImage-Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF8BD150EFB80E600852D77 /* NSImage-Extras.m */; };
+		2CF8BD2A0EFB869400852D77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CF8BD290EFB869400852D77 /* QuartzCore.framework */; };
 		2CFCD8850CE03A17001C1B33 /* wingtip.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCD8840CE03A17001C1B33 /* wingtip.jpg */; };
 		2CFCD8870CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CFCD8860CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
@@ -83,6 +92,8 @@
 		2C0383690DE25D3500E6B7D4 /* PacketEthernet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketEthernet.m; sourceTree = "<group>"; };
 		2C03836C0DE25D5400E6B7D4 /* PacketIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketIP.h; sourceTree = "<group>"; };
 		2C03836D0DE25D5400E6B7D4 /* PacketIP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketIP.m; sourceTree = "<group>"; };
+		2C0C1D030EF75CB800146E53 /* ImageViewBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewBox.h; sourceTree = "<group>"; };
+		2C0C1D040EF75CB800146E53 /* ImageViewBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewBox.m; sourceTree = "<group>"; };
 		2C1F34BD0DF675F700C4B98A /* TrafficAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrafficAnalyzer.h; sourceTree = "<group>"; };
 		2C1F34BE0DF675F700C4B98A /* TrafficAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrafficAnalyzer.m; sourceTree = "<group>"; };
 		2C1F34F70DF7013C00C4B98A /* ConnectionIdentifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionIdentifier.h; sourceTree = "<group>"; };
@@ -93,11 +104,18 @@
 		2C26D1050DEA9F91000CFA47 /* ConnectionTCP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionTCP.m; sourceTree = "<group>"; };
 		2C30D79A0DE3F3CF0086A3A1 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		2C41022A0DEA0B2C00B2EC12 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		2C4490970EFEFD9C00D75761 /* PcapConfigSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapConfigSheet.h; sourceTree = "<group>"; };
+		2C4490980EFEFD9C00D75761 /* PcapConfigSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcapConfigSheet.m; sourceTree = "<group>"; };
+		2C4490B10EFEFDED00D75761 /* SCNetworkInterfaceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNetworkInterfaceList.h; sourceTree = "<group>"; };
+		2C4490B20EFEFDED00D75761 /* SCNetworkInterfaceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNetworkInterfaceList.m; sourceTree = "<group>"; };
+		2C4490C40EFEFE8C00D75761 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
+		2C4490C90EFEFEDA00D75761 /* PcapConfigSheet.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PcapConfigSheet.xib; sourceTree = "<group>"; };
 		2C4650480DE27A4C00F0A2EA /* PacketDatalink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketDatalink.h; sourceTree = "<group>"; };
 		2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketDatalink.m; sourceTree = "<group>"; };
 		2C46515D0DE2972D00F0A2EA /* PacketTCP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketTCP.m; sourceTree = "<group>"; };
 		2C487E8A0EDD0A4300628DEA /* HTTPRequestScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequestScanner.h; sourceTree = "<group>"; };
 		2C487E8B0EDD0A4300628DEA /* HTTPRequestScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequestScanner.m; sourceTree = "<group>"; };
+		2C5110E30EF796FF00196969 /* icon03.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon03.icns; sourceTree = "<group>"; };
 		2C5197190EF4ADC1009038AC /* JFIFScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFIFScanner.h; sourceTree = "<group>"; };
 		2C51971A0EF4ADC1009038AC /* JFIFScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFIFScanner.m; sourceTree = "<group>"; };
 		2C5198A90EF4B145009038AC /* JFIFScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFIFScan.h; sourceTree = "<group>"; };
@@ -121,6 +139,11 @@
 		2CF832540EEB805C0092477E /* ScannerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerUtils.h; sourceTree = "<group>"; };
 		2CF832610EEB82F20092477E /* PNGScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNGScanner.h; sourceTree = "<group>"; };
 		2CF832620EEB82F20092477E /* PNGScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNGScanner.m; sourceTree = "<group>"; };
+		2CF8BD120EFB80E600852D77 /* FlyingImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlyingImagesView.h; sourceTree = "<group>"; };
+		2CF8BD130EFB80E600852D77 /* FlyingImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlyingImagesView.m; sourceTree = "<group>"; };
+		2CF8BD140EFB80E600852D77 /* NSImage-Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage-Extras.h"; sourceTree = "<group>"; };
+		2CF8BD150EFB80E600852D77 /* NSImage-Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage-Extras.m"; sourceTree = "<group>"; };
+		2CF8BD290EFB869400852D77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		2CFCD8840CE03A17001C1B33 /* wingtip.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wingtip.jpg; sourceTree = "<group>"; };
 		2CFCD8860CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 128344313412187500isluvliestfa.jpg; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PcapSandbox_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapSandbox_Prefix.pch; sourceTree = "<group>"; };
@@ -136,6 +159,8 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2C6A4D370CE5900500D831EB /* libpcap.0.9.8.dylib in Frameworks */,
 				2C41025F0DEA0B2C00B2EC12 /* Security.framework in Frameworks */,
+				2CF8BD2A0EFB869400852D77 /* QuartzCore.framework in Frameworks */,
+				2C4490C50EFEFE8C00D75761 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +172,8 @@
 			children = (
 				2CD823280CDC3F1400CF8239 /* PSBController.h */,
 				2CD823290CDC3F1400CF8239 /* PSBController.m */,
+				2C4490B10EFEFDED00D75761 /* SCNetworkInterfaceList.h */,
+				2C4490B20EFEFDED00D75761 /* SCNetworkInterfaceList.m */,
 				2CD823A90CDC614600CF8239 /* PacketStream.h */,
 				2CD823AA0CDC614600CF8239 /* PacketStream.m */,
 				2C26D1040DEA9F91000CFA47 /* ConnectionTCP.h */,
@@ -166,6 +193,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2CF8BD290EFB869400852D77 /* QuartzCore.framework */,
 				2C41022A0DEA0B2C00B2EC12 /* Security.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
@@ -196,6 +224,7 @@
 				2CF8325A0EEB816E0092477E /* Scanners */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				2C0C1CFD0EF75C2000146E53 /* Interface */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -215,11 +244,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2C5110E30EF796FF00196969 /* icon03.icns */,
 				2CFCD8860CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg */,
 				2CFCD8840CE03A17001C1B33 /* wingtip.jpg */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
+				2C4490C90EFEFEDA00D75761 /* PcapConfigSheet.xib */,
 				2C30D79A0DE3F3CF0086A3A1 /* TODO */,
 			);
 			name = Resources;
@@ -228,6 +259,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C4490C40EFEFE8C00D75761 /* SystemConfiguration.framework */,
 				2C6A4D390CE5902A00D831EB /* lib */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
@@ -250,6 +282,18 @@
 				2C4650490DE27A4C00F0A2EA /* PacketDatalink.m */,
 			);
 			name = PacketLib;
+			sourceTree = "<group>";
+		};
+		2C0C1CFD0EF75C2000146E53 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				2C4490970EFEFD9C00D75761 /* PcapConfigSheet.h */,
+				2C4490980EFEFD9C00D75761 /* PcapConfigSheet.m */,
+				2CF8BD110EFB80A300852D77 /* Flying Images */,
+				2C0C1D030EF75CB800146E53 /* ImageViewBox.h */,
+				2C0C1D040EF75CB800146E53 /* ImageViewBox.m */,
+			);
+			name = Interface;
 			sourceTree = "<group>";
 		};
 		2C487EA50EDE25FE00628DEA /* Unused */ = {
@@ -324,6 +368,17 @@
 			name = Scanners;
 			sourceTree = "<group>";
 		};
+		2CF8BD110EFB80A300852D77 /* Flying Images */ = {
+			isa = PBXGroup;
+			children = (
+				2CF8BD120EFB80E600852D77 /* FlyingImagesView.h */,
+				2CF8BD130EFB80E600852D77 /* FlyingImagesView.m */,
+				2CF8BD140EFB80E600852D77 /* NSImage-Extras.h */,
+				2CF8BD150EFB80E600852D77 /* NSImage-Extras.m */,
+			);
+			name = "Flying Images";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -373,6 +428,8 @@
 				2CFCD8850CE03A17001C1B33 /* wingtip.jpg in Resources */,
 				2CFCD8870CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg in Resources */,
 				2C30D79B0DE3F3CF0086A3A1 /* TODO in Resources */,
+				2C5110E40EF796FF00196969 /* icon03.icns in Resources */,
+				2C4490CA0EFEFEDA00D75761 /* PcapConfigSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +461,11 @@
 				2C5198AB0EF4B145009038AC /* JFIFScan.m in Sources */,
 				2C519BAC0EF5DD39009038AC /* GIFScanner.m in Sources */,
 				2C519BB10EF5DD7F009038AC /* GIFScan.m in Sources */,
+				2C0C1D050EF75CB800146E53 /* ImageViewBox.m in Sources */,
+				2CF8BD160EFB80E600852D77 /* FlyingImagesView.m in Sources */,
+				2CF8BD170EFB80E600852D77 /* NSImage-Extras.m in Sources */,
+				2C4490990EFEFD9C00D75761 /* PcapConfigSheet.m in Sources */,
+				2C4490B30EFEFDED00D75761 /* SCNetworkInterfaceList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
