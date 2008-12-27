@@ -157,7 +157,7 @@ NSString * const TADidProcessPacket = @"TADidProcessPacket";
             ci,
             [[ctcp dataBlocks] count],
             ([ctcp hasReceivedFIN] ? @"FIN" : [[ctcp lastUpdate] description])];
-        [ctcp writeBlocksToFile:@"/Users/ivan/pcapsandbox/blockdata"];
+        //[ctcp writeBlocksToFile:@"/Users/ivan/pcapsandbox/blockdata"];
     }
     
     return report;
