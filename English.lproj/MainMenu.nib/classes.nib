@@ -19,6 +19,8 @@
 				<string>id</string>
 				<key>runTcpdump</key>
 				<string>id</string>
+				<key>showPcapConfigSheet</key>
+				<string>id</string>
 				<key>showStatus</key>
 				<string>id</string>
 				<key>toggleAuth</key>
@@ -32,11 +34,61 @@
 			<dict>
 				<key>arrayController</key>
 				<string>NSArrayController</string>
+				<key>fiView</key>
+				<string>FlyingImagesView</string>
+				<key>mainWindow</key>
+				<string>NSWindow</string>
+				<key>pcapConfigSheet</key>
+				<string>PcapConfigSheet</string>
 				<key>textArea</key>
 				<string>NSTextView</string>
 			</dict>
 			<key>SUPERCLASS</key>
 			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>doneWithSheet</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>PcapConfigSheet</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>cancelButton</key>
+				<string>NSButton</string>
+				<key>continueButton</key>
+				<string>NSButton</string>
+				<key>devArrayController</key>
+				<string>NSArrayController</string>
+				<key>devicePopUp</key>
+				<string>NSPopUpButton</string>
+				<key>filterTextField</key>
+				<string>NSTextField</string>
+				<key>modalDelegate</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSPanel</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>FlyingImagesView</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSView</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>ImageViewBox</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSBox</string>
 		</dict>
 	</array>
 	<key>IBVersion</key>
