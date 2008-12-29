@@ -118,13 +118,13 @@
 						<object class="NSButton" id="263366133">
 							<reference key="NSNextResponder" ref="200948083"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{332, 14}, {99, 32}}</string>
+							<string key="NSFrame">{{304, 14}, {125, 32}}</string>
 							<reference key="NSSuperview" ref="200948083"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="87919199">
 								<int key="NSCellFlags">67239424</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">Run pcap</string>
+								<string key="NSContents">Run tcpdump</string>
 								<reference key="NSSupport" ref="942951094"/>
 								<reference key="NSControlView" ref="263366133"/>
 								<int key="NSButtonFlags">-2038284033</int>
@@ -380,8 +380,8 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="860203579"/>
 							<reference ref="981583099"/>
-							<reference ref="695389116"/>
 							<reference ref="263366133"/>
+							<reference ref="695389116"/>
 						</object>
 						<reference key="parent" ref="764319074"/>
 					</object>
@@ -578,14 +578,12 @@
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>clearLogText:</string>
-							<string>runTcpdump:</string>
 							<string>showPcapConfigSheet:</string>
 							<string>showStatus:</string>
 							<string>toggleAuth:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>

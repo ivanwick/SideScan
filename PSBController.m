@@ -217,8 +217,15 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 }
 
 -(id)extractedImages	{ return extractedImages; }
--(BOOL)isHUDVisible		{ return isHUDVisible; }
--(void)setIsHUDVisible:(BOOL)b	{ isHUDVisible = b; }
+
+-(BOOL)isImagesCollectionVisible          { return isImagesCollectionVisible; }
+-(void)setIsImagesCollectionVisible:(BOOL)b	 { isImagesCollectionVisible = b; }
+-(BOOL)isHUDVisible                       { return isHUDVisible; }
+-(void)setIsHUDVisible:(BOOL)b               { isHUDVisible = b; }
+-(BOOL)isFlyingImagesVisible              { return isFlyingImagesVisible; }
+-(void)setIsFlyingImagesVisible:(BOOL)b      { isFlyingImagesVisible = b; }
+-(BOOL)isAnimationSettingsVisible         { return isAnimationSettingsVisible; }
+-(void)setIsAnimationSettingsVisible:(BOOL)b { isAnimationSettingsVisible = b; }
 
 
 

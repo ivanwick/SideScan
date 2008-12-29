@@ -22,7 +22,10 @@
     IBOutlet NSTextView * textArea;
     IBOutlet NSArrayController *arrayController;
 	
+	BOOL isImagesCollectionVisible;
 	BOOL isHUDVisible;
+	BOOL isFlyingImagesVisible;
+	BOOL isAnimationSettingsVisible;
     
     IBOutlet FlyingImagesView * fiView;
     
