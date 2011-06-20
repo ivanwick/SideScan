@@ -44,8 +44,8 @@
 - (void)awakeFromNib
 {
     NSImage * nsi = [[[NSImage alloc] 
-        initWithContentsOfFile:@"/System/Library/CoreServices/Bluetooth Setup Assistant.app/Contents/Resources/AppIcon.icns"]
-        //initWithContentsOfFile:@"/System/Library/CoreServices/AOS.bundle/Contents/Resources/48x67iDisk.tiff"]
+        //initWithContentsOfFile:@"/System/Library/CoreServices/Bluetooth Setup Assistant.app/Contents/Resources/AppIcon.icns"]
+        initWithContentsOfFile:@"/System/Library/CoreServices/AOS.bundle/Contents/Resources/48x67iDisk.tiff"]
         //initWithContentsOfFile:@"/Applications/Utilities/Remote Install Mac OS X.app/Contents/Resources/Background.png"]
         //initWithContentsOfFile:@"/System/Library/Automator/Ask for Confirmation.action/Contents/Resources/Normal.tiff"]
          //initWithContentsOfFile:@"/System/Library/CoreServices/Setup Assistant.app/Contents/Resources/MigrationSection.bundle/Contents/Resources/EthernetCable.tif"] autorelease];
@@ -332,8 +332,8 @@
 /* This small class right here is ridiculous, but the reason it exists is
    because I can't find in the documentation any way to, given an animation,
    get the layer it was animating.  I take it this is because the same animation
-   can be applied to multiple layers at arbitrary times, though I have not read
-   or tested this.
+   can be applied to multiple layers at arbitrary and possibly overlapping
+   times, though I have not read or tested this.
    I would have liked to do something in the View object like
      -(void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
      {  

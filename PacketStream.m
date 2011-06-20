@@ -107,6 +107,18 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
 - (void)monitorInBackgroundAndNotify
 {
 	NSLog(@"main thread: self: %@", self);
+
+	pcapsess = pcap_fopen_offline(filePtr, errbuf);
+	if (pcapsess == NULL)
+	{	NSLog(@"Can't open pcap session.");
+		// throw an exception with errbuf??
+		return;
+	}
+	
+    _shouldContinueMonitoring = YES;
+	datalinkLength = [self pcap_datalinkLength];
+	NSLog(@"PacketStream datalinkLength: %d", datalinkLength);
+
     [NSThread detachNewThreadSelector:@selector (startPcapLoopForeverArg:)
         toTarget:self
         withObject:nil];
@@ -117,17 +129,7 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
     int result;
     NSAutoreleasePool *pool;
 
-	pcapsess = pcap_fopen_offline(filePtr, errbuf);
-	if (pcapsess == NULL)
-	{	NSLog(@"Can't open pcap session.");
-		// throw an exception with errbuf??
-		return;
-	}
-	
-	datalinkLength = [self pcap_datalinkLength];
-	NSLog(@"PacketStream datalinkLength: %d", datalinkLength);
-
-    while (YES)
+    while (_shouldContinueMonitoring)
     {
         pool = [[NSAutoreleasePool alloc] init];
 
@@ -135,8 +137,10 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
            destroy and create a new Autorelease Pool.  */
 
         /* FIX is 20 a good number for this? */
-        result = pcap_loop(pcapsess, 20,
+        result = pcap_loop(pcapsess, 200,
                     PacketPipe_packetrecv, (void*)self );
+
+        NSLog(@"pcap_loop result: %d", result);
 
     /* -1 is returned on an error; 0 is
        returned if cnt is exhausted; -2 is returned if the loop terminated due
@@ -147,6 +151,14 @@ void PacketPipe_packetrecv(u_char *userarg, const struct pcap_pkthdr *header,
     }
 }
 
+
+-(void) stopMonitoring
+{
+    _shouldContinueMonitoring = NO;
+    if (pcapsess != NULL)
+    {   pcap_breakloop(pcapsess);
+    }
+}
 
 - (PcapPacket *)getNextPacket
 {

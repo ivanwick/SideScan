@@ -1,6 +1,7 @@
 /* PcapConfigSheet */
 
 #import <Cocoa/Cocoa.h>
+#import <pcap.h>
 
 @interface PcapConfigSheet : NSPanel
 {
@@ -18,6 +19,7 @@
     
     IBOutlet NSButton *continueButton;
     IBOutlet NSButton *cancelButton;
+    
 }
 
 - (IBAction)doneWithSheet:(id)sender;

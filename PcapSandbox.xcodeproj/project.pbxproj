@@ -22,6 +22,7 @@
 		2C26D1060DEA9F91000CFA47 /* ConnectionTCP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C26D1040DEA9F91000CFA47 /* ConnectionTCP.h */; };
 		2C26D1070DEA9F91000CFA47 /* ConnectionTCP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C26D1050DEA9F91000CFA47 /* ConnectionTCP.m */; };
 		2C30D79B0DE3F3CF0086A3A1 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 2C30D79A0DE3F3CF0086A3A1 /* TODO */; };
+		2C339DF8117BEA3000B19CEB /* libpcap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C339DF7117BEA3000B19CEB /* libpcap.dylib */; };
 		2C41025F0DEA0B2C00B2EC12 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C41022A0DEA0B2C00B2EC12 /* Security.framework */; };
 		2C4490990EFEFD9C00D75761 /* PcapConfigSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4490980EFEFD9C00D75761 /* PcapConfigSheet.m */; };
 		2C4490B30EFEFDED00D75761 /* SCNetworkInterfaceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C4490B20EFEFDED00D75761 /* SCNetworkInterfaceList.m */; };
@@ -36,7 +37,11 @@
 		2C519BAC0EF5DD39009038AC /* GIFScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C519BAB0EF5DD39009038AC /* GIFScanner.m */; };
 		2C519BB10EF5DD7F009038AC /* GIFScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C519BB00EF5DD7F009038AC /* GIFScan.m */; };
 		2C6104C00EF0796E0055BC20 /* PNGScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C6104BF0EF0796E0055BC20 /* PNGScan.m */; };
-		2C9487A80F07176200FDAC1C /* libpcap.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9487A50F07172D00FDAC1C /* libpcap.A.dylib */; };
+		2C93B2F00F08AB71005742F8 /* PcapConfigController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C93B2EF0F08AB71005742F8 /* PcapConfigController.m */; };
+		2C93B2F40F08BCCF005742F8 /* InvalidDataIcon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C93B2F30F08BCCF005742F8 /* InvalidDataIcon.tiff */; };
+		2C93B3E90F08DB1C005742F8 /* PBXBuildFileExtraInfoIcon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2C93B3E80F08DB1C005742F8 /* PBXBuildFileExtraInfoIcon.tiff */; };
+		2C93B3EC0F08DEAA005742F8 /* FBValidationPassIcon.tif in Resources */ = {isa = PBXBuildFile; fileRef = 2C93B3EB0F08DEAA005742F8 /* FBValidationPassIcon.tif */; };
+		2C93B3EE0F08DEB5005742F8 /* FBValidationErrorIcon.tif in Resources */ = {isa = PBXBuildFile; fileRef = 2C93B3ED0F08DEB5005742F8 /* FBValidationErrorIcon.tif */; };
 		2C9BB4AD0CDFA0E5004E2ABA /* PacketAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */; };
 		2C9BB4C50CDFA685004E2ABA /* PcapPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BB4C40CDFA685004E2ABA /* PcapPacket.m */; };
 		2CAAD7CD0DE3BB12006838B1 /* PcapPacket.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C9BB4C30CDFA685004E2ABA /* PcapPacket.h */; };
@@ -101,6 +106,7 @@
 		2C26D1040DEA9F91000CFA47 /* ConnectionTCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionTCP.h; sourceTree = "<group>"; };
 		2C26D1050DEA9F91000CFA47 /* ConnectionTCP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionTCP.m; sourceTree = "<group>"; };
 		2C30D79A0DE3F3CF0086A3A1 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		2C339DF7117BEA3000B19CEB /* libpcap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcap.dylib; path = /usr/lib/libpcap.dylib; sourceTree = "<absolute>"; };
 		2C41022A0DEA0B2C00B2EC12 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		2C4490970EFEFD9C00D75761 /* PcapConfigSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapConfigSheet.h; sourceTree = "<group>"; };
 		2C4490980EFEFD9C00D75761 /* PcapConfigSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcapConfigSheet.m; sourceTree = "<group>"; };
@@ -124,7 +130,12 @@
 		2C519BB00EF5DD7F009038AC /* GIFScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIFScan.m; sourceTree = "<group>"; };
 		2C6104BE0EF0796E0055BC20 /* PNGScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNGScan.h; sourceTree = "<group>"; };
 		2C6104BF0EF0796E0055BC20 /* PNGScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNGScan.m; sourceTree = "<group>"; };
-		2C9487A50F07172D00FDAC1C /* libpcap.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcap.A.dylib; path = usr/lib/libpcap.A.dylib; sourceTree = SDKROOT; };
+		2C93B2EE0F08AB71005742F8 /* PcapConfigController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapConfigController.h; sourceTree = "<group>"; };
+		2C93B2EF0F08AB71005742F8 /* PcapConfigController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcapConfigController.m; sourceTree = "<group>"; };
+		2C93B2F30F08BCCF005742F8 /* InvalidDataIcon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = InvalidDataIcon.tiff; sourceTree = "<group>"; };
+		2C93B3E80F08DB1C005742F8 /* PBXBuildFileExtraInfoIcon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PBXBuildFileExtraInfoIcon.tiff; sourceTree = "<group>"; };
+		2C93B3EB0F08DEAA005742F8 /* FBValidationPassIcon.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = FBValidationPassIcon.tif; sourceTree = "<group>"; };
+		2C93B3ED0F08DEB5005742F8 /* FBValidationErrorIcon.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = FBValidationErrorIcon.tif; sourceTree = "<group>"; };
 		2C9BB4AB0CDFA0E5004E2ABA /* PacketAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketAnalyzer.h; sourceTree = "<group>"; };
 		2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PacketAnalyzer.m; sourceTree = "<group>"; };
 		2C9BB4C30CDFA685004E2ABA /* PcapPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcapPacket.h; sourceTree = "<group>"; };
@@ -158,7 +169,7 @@
 				2C41025F0DEA0B2C00B2EC12 /* Security.framework in Frameworks */,
 				2CF8BD2A0EFB869400852D77 /* QuartzCore.framework in Frameworks */,
 				2C4490C50EFEFE8C00D75761 /* SystemConfiguration.framework in Frameworks */,
-				2C9487A80F07176200FDAC1C /* libpcap.A.dylib in Frameworks */,
+				2C339DF8117BEA3000B19CEB /* libpcap.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +255,10 @@
 			isa = PBXGroup;
 			children = (
 				2C5110E30EF796FF00196969 /* icon03.icns */,
+				2C93B3EB0F08DEAA005742F8 /* FBValidationPassIcon.tif */,
+				2C93B3ED0F08DEB5005742F8 /* FBValidationErrorIcon.tif */,
+				2C93B2F30F08BCCF005742F8 /* InvalidDataIcon.tiff */,
+				2C93B3E80F08DB1C005742F8 /* PBXBuildFileExtraInfoIcon.tiff */,
 				2CFCD8860CE03A70001C1B33 /* 128344313412187500isluvliestfa.jpg */,
 				2CFCD8840CE03A17001C1B33 /* wingtip.jpg */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -258,9 +273,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2C9487A50F07172D00FDAC1C /* libpcap.A.dylib */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				2C339DF7117BEA3000B19CEB /* libpcap.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -285,8 +300,7 @@
 		2C0C1CFD0EF75C2000146E53 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				2C4490970EFEFD9C00D75761 /* PcapConfigSheet.h */,
-				2C4490980EFEFD9C00D75761 /* PcapConfigSheet.m */,
+				2C9487E00F08AA8700FDAC1C /* PcapConfig */,
 				2CF8BD110EFB80A300852D77 /* Flying Images */,
 				2C0C1D030EF75CB800146E53 /* ImageViewBox.h */,
 				2C0C1D040EF75CB800146E53 /* ImageViewBox.m */,
@@ -301,6 +315,17 @@
 				2C9BB4AC0CDFA0E5004E2ABA /* PacketAnalyzer.m */,
 			);
 			name = Unused;
+			sourceTree = "<group>";
+		};
+		2C9487E00F08AA8700FDAC1C /* PcapConfig */ = {
+			isa = PBXGroup;
+			children = (
+				2C4490970EFEFD9C00D75761 /* PcapConfigSheet.h */,
+				2C4490980EFEFD9C00D75761 /* PcapConfigSheet.m */,
+				2C93B2EE0F08AB71005742F8 /* PcapConfigController.h */,
+				2C93B2EF0F08AB71005742F8 /* PcapConfigController.m */,
+			);
+			name = PcapConfig;
 			sourceTree = "<group>";
 		};
 		2CE0505D0EF3DA2200720A78 /* PNG */ = {
@@ -420,6 +445,10 @@
 				2C30D79B0DE3F3CF0086A3A1 /* TODO in Resources */,
 				2C5110E40EF796FF00196969 /* icon03.icns in Resources */,
 				2C4490CA0EFEFEDA00D75761 /* PcapConfigSheet.xib in Resources */,
+				2C93B2F40F08BCCF005742F8 /* InvalidDataIcon.tiff in Resources */,
+				2C93B3E90F08DB1C005742F8 /* PBXBuildFileExtraInfoIcon.tiff in Resources */,
+				2C93B3EC0F08DEAA005742F8 /* FBValidationPassIcon.tif in Resources */,
+				2C93B3EE0F08DEB5005742F8 /* FBValidationErrorIcon.tif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +485,7 @@
 				2CF8BD170EFB80E600852D77 /* NSImage-Extras.m in Sources */,
 				2C4490990EFEFD9C00D75761 /* PcapConfigSheet.m in Sources */,
 				2C4490B30EFEFDED00D75761 /* SCNetworkInterfaceList.m in Sources */,
+				2C93B2F00F08AB71005742F8 /* PcapConfigController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,6 +21,8 @@
 	NSMutableArray *packetBuf;
 
 	NSLock *bufferLock;
+    
+    BOOL _shouldContinueMonitoring;
 }
 
 NSString * const PcapPacketReceived; // = @"PcapMonitorPacketReceived";
@@ -40,6 +42,8 @@ NSString * const PcapPacketReceived; // = @"PcapMonitorPacketReceived";
 - (unsigned int)datalinkLength;
 
 - (unsigned int)pcap_datalinkLength;
+
+-(void) stopMonitoring;
 
 /* these are only used by the pcap callback and is not part of the public
    interface of this class */

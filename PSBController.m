@@ -308,18 +308,25 @@ char tcpdump_path[] = "/usr/sbin/tcpdump";
 -(void) didEndSheet:(NSPanel *)theSheet returnCode:(int)returnCode
     contextInfo:(void *)contextInfo
 {
+    [theSheet orderOut:self];
     if (returnCode == PCSContinueButton)
     {
+        //[theSheet orderOut:self];
         [self runTcpdumpWithDevice:[pcapConfigSheet device]
                             filter:[pcapConfigSheet filter]];
-        [theSheet orderOut:self];
     }
     else
     {
+        //[theSheet orderOut:self];
         NSLog(@"%@: PCSCancelButton", self);
-        //[self close];
     }
 }
 
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
+{
+    NSLog(@"stopping the packet monitor");
+    [pktStream stopMonitoring];
+    return NSTerminateNow;
+}
 
 @end

@@ -41,7 +41,8 @@ Scanner modules:
 	PNGScanner
 	JPGScanner
 	GIFScanner
-- HTTPAuthScanner to get digest passwords from HTTP requests
+- HTTPAuthScanner to get digest passwords from HTTP requests (RFC 2617)
+- Video Keyframe Scanner from FLV or similar, or extracting full motion video.
 
 - Make a plugin interface out of the scanner modules
 
@@ -63,3 +64,16 @@ Scanner modules:
     [d length] - LENGTH_OF_WHATEVER_YOU_RE_SEARCHING_FOR_WITH_MEMMEM
   so that partial signatures are not skipped but everything up to near the end
   can be.
+  
+- Optimize the initial signature/SOI/header scan by grouping multiple start
+  signatures into a regular expression (pcre?).  Have scanner modules register
+  their regular expression or signature with the master regexp scanner and
+  respond when they are found.
+  
+- Fix JFIFScans to really look at file structure instead of cheap EOI detection.
+- Expand JFIF scans to includ EXIF?
+
+- Rearrange PcapConfigSheet/Controller code.
+- Come up with a better way of getting the network interface list or at least
+  sort the list coming from SCNetworkInterfaceList so that Airport and Ethernet
+  are at the top.
