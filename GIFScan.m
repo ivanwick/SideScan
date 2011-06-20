@@ -320,25 +320,70 @@ void * searchGIFHeaders(const void *haystack, size_t haystack_len)
 
 
 
-struct packedbyte
-{
-    unsigned char tableFlag:1;      // this was way awesomer when it was
-    unsigned char dontCare:4;       // inlined as an initializer
-    unsigned char tableSizeField:3;
-};
+
+const unsigned char GIFScan_TableFlag_Mask = 0x80;  // b10000000
+const unsigned char GIFScan_TableSize_Mask = 0x07;  // b00000111
 
 /* This method can use the packed fields and get the size of Global Color Table
    OR Local ones.  The packed field layout and size calculation happens to be
    the same. */
 +(unsigned int)colorTableSizeFromPackedByte:(char)p
 {
-    struct packedbyte * packed = (struct packedbyte *)&p; 
+    unsigned char tableFlag      = p & GIFScan_TableFlag_Mask;
+    unsigned char tableSizeField = p & GIFScan_TableSize_Mask;
+    // note: the shifts have been left out but it still works ok.  FOR NOW
     
-    if (packed->tableFlag == 0)
+    if (tableFlag == 0)
     {   return 0;
     }
     else
-    {   return pow(2, packed->tableSizeField + 1) * 3;  // * 3 because r,g,b
+    {   return pow(2, tableSizeField + 1) * 3;  // * 3 because r,g,b
     }
 }
+
+#if 0
+
+/* The method above as previously written got the values from the packed byte
+   by using a struct with bit fields, as shown below. I thought this approach
+   would be immune to byte-order variations because the values are in a single
+   byte.
+   However, it turns out that the BIT-order that the compiler uses to pack the
+   fields is also variable and implementation-dependent. For GCC, it is an
+   option that is set when the COMPILER is being compiled, and happened to cause
+   different behavior on my PowerBook vs an Intel MacPro.
+   
+   ref: http://gcc.gnu.org/onlinedocs/gccint/Storage-Layout.html
+   BITS_BIG_ENDIAN
+   
+   The __DARWIN_BYTE_ORDER endian checks solved the problem in this case, but I
+   don't think it is technically correct because we are not checking the
+   compiler's bit-field order directly, it just happens to be correlated with
+   the platform's byte endianness.
+   
+   But Apple itself is using the endian flags in this manner for struct bit
+   fields like in /usr/src/netinet/tcp.h (which is where I got the idea),
+   so who knows.
+   
+   As seen above, this problem is avoided by using a couple of bit masks.
+   Luckily we are only checking a couple of bit fields in the packed byte, so
+   using the masks is not too much trouble.
+*/
+
+struct packedbyte
+{
+#if __DARWIN_BYTE_ORDER == __DARWIN_BIG_ENDIAN
+    unsigned char tableFlag:1;      // this was way awesomer when it was
+    unsigned char dontCare:4;       // inlined as an initializer
+    unsigned char tableSizeField:3;
+#endif
+#if __DARWIN_BYTE_ORDER == __DARWIN_LITTLE_ENDIAN
+    unsigned char tableSizeField:3;
+    unsigned char dontCare:4;       // inlined as an initializer
+    unsigned char tableFlag:1;      // this was way awesomer when it was
+#endif
+};
+
+#endif
+
+
 @end

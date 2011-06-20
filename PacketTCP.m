@@ -66,7 +66,7 @@
 }
 
 -(unsigned int)tcpDataByteOffset;
-{	return ntohl(((struct tcphdr*)tcpHeadPtr)->th_off) * 4;
+{	return ((struct tcphdr*)tcpHeadPtr)->th_off * 4;
     // multiply by 4 is sizeof(int) because th_off is in units of
     // 32-bit words.
 }
