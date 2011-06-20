@@ -17,8 +17,12 @@
 -(id)init;
 -(id)initWithInitialPacket:(PacketTCP *)pkt initialSeqNum:(unsigned int)isn;
 
++(id)dataBlockWithData:(NSMutableData *)someData range:(NSRange)aRange;
+
 -(NSRange)range;
 -(NSData*)data;
+-(void)setRange:(NSRange)r;
+-(void)setData:(NSMutableData *)d;
 
 // a private one
 -(unsigned int)offsetWraparoundSeqNum:(unsigned int)seqnum

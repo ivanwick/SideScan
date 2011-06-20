@@ -28,6 +28,15 @@
     [super dealloc];
 }
 
++(id)dataBlockWithData:(NSMutableData *)someData range:(NSRange)aRange {
+	DataBlock *newDataBlock = [[DataBlock alloc] init];
+	[newDataBlock setData:someData];
+	[newDataBlock setRange:aRange];
+	[newDataBlock autorelease];
+	return newDataBlock;
+}
+
+
 -(id)initWithInitialPacket:(PacketTCP *)pkt initialSeqNum:(unsigned int)isn;
 {
     self = [super init];
@@ -71,6 +80,9 @@
 -(NSRange)range {   return _range;  }
 -(NSData*)data  {   return _data;   }
 
+-(void)setRange:(NSRange)r { _range = r;  }
+-(void)setData:(NSMutableData *)d  { _data = d;   }
+
 -(void)appendDataBlock:(DataBlock *)blk
 {
     [_data appendData:[blk data]];
@@ -80,35 +92,54 @@
 
 /* this method combineWithDataBlock is essentially a wrapper for appendDataBlock
    with some range checking in case the ranges aren't adjacent, but overlap.
-*/
+
+   This method does not handle a new block whose range is BEFORE self. (as seen
+   in the NSAssert)
+ */
 -(void)combineWithDataBlock:(DataBlock *)blk
 {
     // if ranges overlap, make a new DataBlock out of the non-overlapping part
     // of blk, and call appendDataBlock on the new DataBlock slice.
     
     // Otherwise, just pass this message through to appendDataBlock
-    
+	
     NSRange otherRange = [blk range];
-    DataBlock *sliceBlock;
-    
-    if (_range.location + _range.length > otherRange.location)
-    {
-        // make a new one?? or maybe just have a way to extract the data
 
-        // slice it
-        #if 0
-        sliceBlock = [[DataBlock alloc] initWithInitialPacket: initialSeqNum:;
-        [self appendDataBlock:sliceBlock];
-        [sliceBlock release];
-        #else
-        NSLog(@"combine blocks with nonadjacent ranges??? QUIT YO JIBBA JABBA!!");
-        #endif
+	NSAssert(_range.location <= otherRange.location,
+			 @"This method doesn't handle a new block with range BEFORE self");
+    
+	NSRange intersectRange = NSIntersectionRange(_range, otherRange);
+	NSUInteger appendLoc = _range.location + _range.length;
+	
+    if (intersectRange.length > 0)
+    {
+		/* otherRange overlaps with _range. */
+		if (otherRange.location + otherRange.length > appendLoc) {
+			/* otherRange overhangs the end of _range so we need to
+			   slice and keep the extra data */
+		
+			NSRange sliceRange = NSMakeRange(appendLoc, 
+									 otherRange.length - intersectRange.length);
+			NSMutableData * sliceData = [NSMutableData dataWithBytesNoCopy:(void*)([[blk data] bytes]+intersectRange.length)
+																	length:sliceRange.length];
+			DataBlock *sliceBlock = [DataBlock dataBlockWithData:sliceData range:sliceRange];
+			[self appendDataBlock:sliceBlock];
+		}
+		else {
+			/* otherRange is fully contained within _range.
+			   no need to process it further.
+			 */
+			NSLog(@"skipping fully contained JIBBA JABBA");
+		}
     }
     else
     {
-        assert(_range.location + _range.length == otherRange.location);
+        NSAssert(_range.location + _range.length == otherRange.location,
+				@"DataBlock to append isn't directly adjacent");
         [self appendDataBlock:blk];
     }
+					  
+					  
 }
 
 -(unsigned int)rangeLocation    { return _range.location; }
