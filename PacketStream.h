@@ -25,8 +25,6 @@
     BOOL _shouldContinueMonitoring;
 }
 
-NSString * const PcapPacketReceived; // = @"PcapMonitorPacketReceived";
-
 - (id)init;
 - (id)initWithFilePtr:(FILE *)filePtr;
 
@@ -51,3 +49,6 @@ NSString * const PcapPacketReceived; // = @"PcapMonitorPacketReceived";
 - (NSMutableArray *)packetBuf;
 
 @end
+
+NSString * const PcapPacketReceived; // = @"PcapMonitorPacketReceived";
+

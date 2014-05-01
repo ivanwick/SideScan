@@ -16,9 +16,6 @@
     NSMutableDictionary * _activeScans;
 }
 
-// GIFScannerDidExtractImage ??
-NSString * const GIFScannerExtractedImage;
-
 - (void)registerAsObserver;
 - (void)startNewScanForBlock:(DataBlock*)block;
 
@@ -31,3 +28,6 @@ NSString * const GIFScannerExtractedImage;
 
 
 @end
+
+// GIFScannerDidExtractImage ??
+NSString * const GIFScannerExtractedImage;

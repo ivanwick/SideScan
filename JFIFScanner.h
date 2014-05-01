@@ -13,9 +13,6 @@
 	NSMutableDictionary * _activeScans;
 }
 
-// JFIFScannerDidExtractImage ??
-NSString * const JFIFScannerExtractedImage;
-
 - (void)registerAsObserver;
 - (void)startNewScanForBlock:(DataBlock*)block;
 
@@ -27,3 +24,6 @@ NSString * const JFIFScannerExtractedImage;
 
 
 @end
+
+// JFIFScannerDidExtractImage ??
+NSString * const JFIFScannerExtractedImage;

@@ -20,9 +20,6 @@
     NSTimer * _sweepTimer;
 }
 
-/* Notifications */
-NSString * const TADidProcessPacket;
-
 -(void)receivedPacketNotification:(NSNotification *)note;
 
 -(void)sweepConnections;
@@ -30,3 +27,6 @@ NSString * const TADidProcessPacket;
 -(NSString *)connectionStatus;
 -(void)periodicSweep:(NSTimer *)timer;
 @end
+
+/* Notifications */
+NSString * const TADidProcessPacket;

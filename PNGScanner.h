@@ -13,9 +13,6 @@
     NSMutableDictionary * _activeScans;
 }
 
-// PNGScannerDidExtractImage ??
-NSString * const PNGScannerExtractedImage;
-
 - (void)registerAsObserver;
 - (void)startNewScanForBlock:(DataBlock*)block;
 
@@ -28,3 +25,6 @@ NSString * const PNGScannerExtractedImage;
 
 
 @end
+
+// PNGScannerDidExtractImage ??
+NSString * const PNGScannerExtractedImage;
